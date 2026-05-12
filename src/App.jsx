@@ -16,8 +16,8 @@ window.Chart = Chart
 // =============================================================================
 const T = {
   font: {
-    display: "'Cormorant Garamond', Georgia, serif",
-    body:    "'Outfit', sans-serif",
+    display: "'Ubuntu', Noto-Sans, serif",
+    body:    "'Ubuntu', sans-serif",
   },
   color: {
     sage:        "#3d6b50",
@@ -52,10 +52,10 @@ const T = {
 };
 
 const GLOBAL_CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{font-size:14px;-webkit-font-smoothing:antialiased;}
-body{font-family:'Outfit',sans-serif;background:#faf8f3;color:#1a1714;min-height:100vh;}
+body{font-family:'Ubuntu',sans-serif;background:#faf8f3;color:#1a1714;min-height:100vh;}
 input,select,button{font-family:inherit;}
 input[type=date]::-webkit-calendar-picker-indicator{opacity:.5;cursor:pointer;}
 ::-webkit-scrollbar{width:5px;height:5px;}
@@ -207,8 +207,8 @@ function SectionHeading({ icon, iconBg, children, aside }) {
   return (
     <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom: 18, gap: 10, flexWrap:"wrap" }}>
       <div style={{ display:"flex", alignItems:"center", gap: 10 }}>
-        <span style={{ width:34, height:34, borderRadius: T.r.md, background: iconBg || T.color.sagePale, display:"flex", alignItems:"center", justifyContent:"center", fontSize:17, flexShrink:0 }}>{icon}</span>
-        <span style={{ fontFamily: T.font.display, fontSize: 20, fontWeight: 700, color: T.color.ink, letterSpacing: "-.3px" }}>{children}</span>
+        <span style={{ width:34, height:34, borderRadius: T.r.md, background: iconBg || T.color.sagePale, display:"flex", alignItems:"center", justifyContent:"center", fontSize:20, flexShrink:0 }}>{icon}</span>
+        <span style={{ fontFamily: T.font.display, fontSize: 22, fontWeight: 700, color: T.color.ink, letterSpacing: "-.3px" }}>{children}</span>
       </div>
       {aside && <div>{aside}</div>}
     </div>
@@ -230,7 +230,7 @@ function Btn({ children, onClick, variant = "default", size = "md", full, disabl
       style={{ display:"inline-flex", alignItems:"center", justifyContent:"center", gap:6, padding: pad,
         background: hov && !disabled ? v.hover : v.bg, color: v.color,
         border: `1.5px solid ${v.border}`, borderRadius: T.r.md,
-        fontSize: size === "sm" ? 12 : 13, fontWeight: 500,
+        fontSize: 16, fontWeight: 500,
         cursor: disabled ? "not-allowed" : "pointer", opacity: disabled ? .5 : 1,
         transition: "all .14s", width: full ? "100%" : undefined, whiteSpace:"nowrap",
         fontFamily: T.font.body, ...style,
@@ -247,7 +247,7 @@ function Inp({ list, style, ...props }) {
         border: `1.5px solid ${foc ? T.color.sage : T.color.border}`,
         borderRadius: T.r.md,
         background: foc ? T.color.white : T.color.cream,
-        color: T.color.ink, fontSize: 13, outline:"none", transition:"all .15s",
+        color: T.color.ink, fontSize: 16, outline:"none", transition:"all .15s",
         boxShadow: foc ? `0 0 0 3px ${T.color.sageLight}55` : "none",
         ...style }}
       {...props}
@@ -263,7 +263,7 @@ function Sel({ style, ...props }) {
         border: `1.5px solid ${foc ? T.color.sage : T.color.border}`,
         borderRadius: T.r.md, appearance:"none", cursor:"pointer",
         background: `${foc ? T.color.white : T.color.cream} url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M.5 1l5 5 5-5' stroke='%237a7068' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") no-repeat right 11px center`,
-        color: T.color.ink, fontSize: 13, outline:"none", transition:"all .15s", ...style }}
+        color: T.color.ink, fontSize: 16, outline:"none", transition:"all .15s", ...style }}
       {...props}
     />
   );
@@ -271,7 +271,7 @@ function Sel({ style, ...props }) {
 
 function FieldLabel({ children }) {
   return (
-    <label style={{ display:"block", fontSize:10, fontWeight:600, letterSpacing:".7px", textTransform:"uppercase", color: T.color.inkMuted, marginBottom:5 }}>
+    <label style={{ display:"block", fontSize:16, fontWeight:600, letterSpacing:".7px", textTransform:"uppercase", color: T.color.inkMuted, marginBottom:5 }}>
       {children}
     </label>
   );
@@ -293,7 +293,7 @@ function Badge({ type }) {
     Skipped: { bg: T.color.creamDark, color: T.color.inkMuted, label:"⏭ Skipped" },
   }[type] || {};
   return (
-    <span style={{ display:"inline-flex", alignItems:"center", gap:3, padding:"3px 10px", borderRadius: T.r.full, background: m.bg, color: m.color, fontSize:11, fontWeight:600 }}>
+    <span style={{ display:"inline-flex", alignItems:"center", gap:3, padding:"3px 10px", borderRadius: T.r.full, background: m.bg, color: m.color, fontSize:16, fontWeight:600 }}>
       {m.label}
     </span>
   );
@@ -315,7 +315,7 @@ function TypePills({ value, onChange }) {
             border: `1.5px solid ${on ? p.activeBorder : T.color.border}`,
             background: on ? p.activeBg : T.color.white,
             color: on ? p.activeColor : T.color.inkMuted,
-            fontSize:11, fontWeight:600, cursor:"pointer", transition:"all .14s",
+            fontSize:16, fontWeight:600, cursor:"pointer", transition:"all .14s",
           }}>{p.label}</button>
         );
       })}
@@ -333,8 +333,8 @@ function Modal({ title, onClose, children }) {
         borderRadius: T.r.xl, padding:"22px 24px", width:"100%", maxWidth:440,
         boxShadow: T.shadow.lg, animation:"scaleIn .2s ease" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:18 }}>
-          <span style={{ fontFamily: T.font.display, fontSize:22, fontWeight:700, color: T.color.ink }}>{title}</span>
-          <button onClick={onClose} style={{ background: T.color.creamDark, border:"none", borderRadius: T.r.sm, width:30, height:30, cursor:"pointer", fontSize:15, color: T.color.inkMuted, display:"flex", alignItems:"center", justifyContent:"center" }}>✕</button>
+          <span style={{ fontFamily: T.font.display, fontSize:24, fontWeight:700, color: T.color.ink }}>{title}</span>
+          <button onClick={onClose} style={{ background: T.color.creamDark, border:"none", borderRadius: T.r.sm, width:30, height:30, cursor:"pointer", fontSize:18, color: T.color.inkMuted, display:"flex", alignItems:"center", justifyContent:"center" }}>✕</button>
         </div>
         {children}
       </div>
@@ -348,7 +348,7 @@ function Toast({ toast }) {
   return (
     <div key={toast.id} style={{ position:"fixed", bottom:24, left:"50%", transform:"translateX(-50%)",
       background: isErr ? T.color.terra : T.color.sage, color:"#fff",
-      padding:"10px 22px", borderRadius: T.r.full, fontSize:13, fontWeight:500,
+      padding:"10px 22px", borderRadius: T.r.full, fontSize:16, fontWeight:500,
       boxShadow: T.shadow.lg, zIndex:99999, whiteSpace:"nowrap",
       animation:"toastIn .3s ease", pointerEvents:"none" }}>
       {toast.msg}
@@ -360,7 +360,7 @@ function EmptyState({ icon, msg }) {
   return (
     <div style={{ textAlign:"center", padding:"48px 24px", color: T.color.inkMuted }}>
       <div style={{ fontSize:36, marginBottom:12 }}>{icon}</div>
-      <div style={{ fontStyle:"italic", fontSize:13 }}>{msg}</div>
+      <div style={{ fontStyle:"italic", fontSize:16 }}>{msg}</div>
     </div>
   );
 }
@@ -417,9 +417,9 @@ function MealCard({ meal, existing, onSave }) {
         <span style={{ fontSize:20 }}>{icon}</span>
         <span style={{ fontFamily: T.font.display, fontSize:18, fontWeight:700, color: T.color.ink }}>{meal}</span>
         {saved
-          ? <span style={{ marginLeft:"auto", background:"#bbf7d0", color:"#15803d", fontSize:10, fontWeight:700, padding:"2px 9px", borderRadius: T.r.full }}>✓ Saved</span>
+          ? <span style={{ marginLeft:"auto", background:"#bbf7d0", color:"#15803d", fontSize:16, fontWeight:700, padding:"2px 9px", borderRadius: T.r.full }}>✓ Saved</span>
           : existing
-          ? <span style={{ marginLeft:"auto", fontSize:10, color: T.color.inkMuted }}>Logged ·</span>
+          ? <span style={{ marginLeft:"auto", fontSize:16, color: T.color.inkMuted }}>Logged ·</span>
           : null}
       </div>
 
@@ -493,9 +493,9 @@ function EditModal({ entry, idx, onSave, onDelete, onClose }) {
 function InsightChip({ emoji, label, value, sub, bg, accent }) {
   return (
     <div style={{ background: bg, borderRadius: T.r.lg, padding:"14px 16px", border:`1px solid ${accent}33` }}>
-      <div style={{ fontSize:10, fontWeight:600, textTransform:"uppercase", letterSpacing:".6px", color: accent, marginBottom:5 }}>{emoji} {label}</div>
-      <div style={{ fontFamily: T.font.display, fontSize:21, fontWeight:700, color: T.color.ink, lineHeight:1.2, marginBottom:3 }}>{value || "—"}</div>
-      <div style={{ fontSize:11, color: T.color.inkMuted }}>{sub}</div>
+      <div style={{ fontSize:16, fontWeight:600, textTransform:"uppercase", letterSpacing:".6px", color: accent, marginBottom:5 }}>{emoji} {label}</div>
+      <div style={{ fontFamily: T.font.display, fontSize:24, fontWeight:700, color: T.color.ink, lineHeight:1.2, marginBottom:3 }}>{value || "—"}</div>
+      <div style={{ fontSize:16, color: T.color.inkMuted }}>{sub}</div>
     </div>
   );
 }
@@ -534,11 +534,11 @@ function LogView() {
       >Log Meals</SectionHeading>
 
       <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:18 }}>
-        <span style={{ fontSize:13, color: T.color.inkMuted }}>
+        <span style={{ fontSize:16, color: T.color.inkMuted }}>
           {logDate === today() ? "📅 Today" : `📅 ${fmtLong(logDate)}`}
         </span>
         {logDate !== today() && (
-          <Btn size="sm" variant="ghost" onClick={() => setLogDate(today())} style={{ fontSize:11 }}>↩ Today</Btn>
+          <Btn size="sm" variant="ghost" onClick={() => setLogDate(today())} style={{ fontSize:16 }}>↩ Today</Btn>
         )}
       </div>
 
@@ -578,14 +578,14 @@ function CalendarView() {
     return (
       <div>
         <Badge type={e.type} />
-        {e.dish       && <div style={{ fontSize:11, color: T.color.inkSoft,  marginTop:3  }}>{e.dish}</div>}
-        {e.preparedBy && <div style={{ fontSize:10, color: T.color.inkMuted, marginTop:1  }}>{e.preparedBy}</div>}
+        {e.dish       && <div style={{ fontSize:16, color: T.color.inkSoft,  marginTop:3  }}>{e.dish}</div>}
+        {e.preparedBy && <div style={{ fontSize:16, color: T.color.inkMuted, marginTop:1  }}>{e.preparedBy}</div>}
       </div>
     );
   };
 
   const TH = ({ ch }) => (
-    <th style={{ padding:"9px 12px", background: T.color.cream, color: T.color.inkMuted, fontSize:11, fontWeight:600, textTransform:"uppercase", letterSpacing:".5px", textAlign:"left", borderBottom:`1px solid ${T.color.border}`, whiteSpace:"nowrap" }}>{ch}</th>
+    <th style={{ padding:"9px 12px", background: T.color.cream, color: T.color.inkMuted, fontSize:16, fontWeight:600, textTransform:"uppercase", letterSpacing:".5px", textAlign:"left", borderBottom:`1px solid ${T.color.border}`, whiteSpace:"nowrap" }}>{ch}</th>
   );
 
   return (
@@ -614,13 +614,13 @@ function CalendarView() {
               const e = byDate[ds] || {};
               return (
                 <tr key={ds} style={{ background: isToday ? T.color.sagePale : i % 2 === 0 ? T.color.white : T.color.cream }}>
-                  <td style={{ padding:"10px 12px", whiteSpace:"nowrap", fontSize:12, borderBottom:`1px solid ${T.color.borderLight}`,
+                  <td style={{ padding:"10px 12px", whiteSpace:"nowrap", fontSize:16, borderBottom:`1px solid ${T.color.borderLight}`,
                     fontWeight: isToday ? 600 : 400, color: isToday ? T.color.sage : T.color.ink }}>
                     {fmtWday(ds)}, {fmtShort(ds)}
                     {isToday && <span style={{ marginLeft:6, display:"inline-block", width:6, height:6, borderRadius:"50%", background: T.color.sage, verticalAlign:"middle" }} />}
                   </td>
                   {["Breakfast","Lunch","Dinner"].map(m => (
-                    <td key={m} style={{ padding:"10px 12px", borderBottom:`1px solid ${T.color.borderLight}`, verticalAlign:"top", fontSize:12 }}>
+                    <td key={m} style={{ padding:"10px 12px", borderBottom:`1px solid ${T.color.borderLight}`, verticalAlign:"top", fontSize:16 }}>
                       <Cell e={e[m]} />
                     </td>
                   ))}
@@ -650,7 +650,7 @@ function HistoryView() {
   const handleDel  = idx => { if (!confirm("Delete this entry?")) return; deleteEntry(idx); setEditIdx(null); show("Deleted", "error"); };
 
   const TH = ({ ch, hide }) => (
-    <th style={{ padding:"9px 12px", background: T.color.cream, color: T.color.inkMuted, fontSize:10, fontWeight:600, textTransform:"uppercase", letterSpacing:".5px", textAlign:"left", borderBottom:`1px solid ${T.color.border}`, position:"sticky", top:0, display: hide ? undefined : undefined }}>
+    <th style={{ padding:"9px 12px", background: T.color.cream, color: T.color.inkMuted, fontSize:16, fontWeight:600, textTransform:"uppercase", letterSpacing:".5px", textAlign:"left", borderBottom:`1px solid ${T.color.border}`, position:"sticky", top:0, display: hide ? undefined : undefined }}>
       {ch}
     </th>
   );
@@ -659,14 +659,14 @@ function HistoryView() {
     <>
       <Card>
         <SectionHeading icon="📋" iconBg={T.color.creamDark}
-          aside={<span style={{ fontSize:12, color: T.color.inkMuted, background: T.color.creamDark, padding:"3px 10px", borderRadius: T.r.full }}>{data.length} entries</span>}
+          aside={<span style={{ fontSize:16, color: T.color.inkMuted, background: T.color.creamDark, padding:"3px 10px", borderRadius: T.r.full }}>{data.length} entries</span>}
         >All Entries</SectionHeading>
 
         {data.length === 0
           ? <EmptyState icon="🍽️" msg="No entries yet — start logging your meals!" />
           : (
             <div style={{ overflowX:"auto", borderRadius: T.r.md, border:`1px solid ${T.color.border}`, maxHeight:480, overflowY:"auto" }}>
-              <table style={{ width:"100%", borderCollapse:"collapse", minWidth:480, fontSize:12 }}>
+              <table style={{ width:"100%", borderCollapse:"collapse", minWidth:480, fontSize:16 }}>
                 <thead><tr>
                   <TH ch="Date" /><TH ch="Meal" /><TH ch="Type" /><TH ch="Dish" /><TH ch="By" /><TH ch="" />
                 </tr></thead>
@@ -687,7 +687,7 @@ function HistoryView() {
                       </td>
                       <td style={{ padding:"10px 12px", borderBottom:`1px solid ${T.color.borderLight}` }}>
                         <button onClick={() => setEditIdx(row._i)}
-                          style={{ background:"none", border:"none", cursor:"pointer", fontSize:14, opacity:.45, borderRadius:6, padding:"2px 5px", transition:"opacity .15s" }}
+                          style={{ background:"none", border:"none", cursor:"pointer", fontSize:16, opacity:.45, borderRadius:6, padding:"2px 5px", transition:"opacity .15s" }}
                           onMouseEnter={e => e.target.style.opacity = 1}
                           onMouseLeave={e => e.target.style.opacity = .45}>✏️</button>
                       </td>
@@ -769,7 +769,7 @@ function InsightsView() {
 
   const ChartBox = ({ title, children }) => (
     <div style={{ background: T.color.cream, borderRadius: T.r.md, padding:"14px 16px", border:`1px solid ${T.color.border}` }}>
-      <div style={{ fontSize:11, fontWeight:600, textTransform:"uppercase", letterSpacing:".5px", color: T.color.inkMuted, marginBottom:10 }}>{title}</div>
+      <div style={{ fontSize:16, fontWeight:600, textTransform:"uppercase", letterSpacing:".5px", color: T.color.inkMuted, marginBottom:10 }}>{title}</div>
       {children}
     </div>
   );
@@ -782,7 +782,7 @@ function InsightsView() {
       <div style={{ display:"flex", gap:10, flexWrap:"wrap", alignItems:"flex-end", marginBottom:20 }}>
         <Field label="From" style={{ marginBottom:0 }}><Inp type="date" value={from} onChange={e => setFrom(e.target.value)} style={{ width:148 }} /></Field>
         <Field label="To"   style={{ marginBottom:0 }}><Inp type="date" value={to}   onChange={e => setTo(e.target.value)}   style={{ width:148 }} /></Field>
-        <span style={{ fontSize:12, color: T.color.inkMuted, paddingBottom:2 }}>{filtered.length} meals in range</span>
+        <span style={{ fontSize:16, color: T.color.inkMuted, paddingBottom:2 }}>{filtered.length} meals in range</span>
       </div>
 
       {/* Insight chips */}
@@ -887,15 +887,15 @@ function DataView() {
       >
         <div style={{ fontSize:28, marginBottom:8 }}>📤</div>
         <div style={{ fontWeight:600, color: T.color.inkSoft, marginBottom:4 }}>Drag & drop Excel file here</div>
-        <div style={{ fontSize:12, color: T.color.sage }}>or click to browse (.xlsx / .xls)</div>
+        <div style={{ fontSize:16, color: T.color.sage }}>or click to browse (.xlsx / .xls)</div>
         <input ref={fileRef} type="file" accept=".xlsx,.xls" style={{ display:"none" }} onChange={e => { const f = e.target.files[0]; if (f) importFile(f); e.target.value = ""; }} />
       </div>
 
       <Divider />
 
       <div style={{ padding:"16px 18px", background: T.color.creamDark, borderRadius: T.r.md, border:`1px solid ${T.color.border}` }}>
-        <div style={{ fontFamily: T.font.display, fontSize:17, fontWeight:600, marginBottom:10 }}>How it works</div>
-        <ol style={{ paddingLeft:18, lineHeight:2, fontSize:13, color: T.color.inkMuted }}>
+        <div style={{ fontFamily: T.font.display, fontSize:20, fontWeight:600, marginBottom:10 }}>How it works</div>
+        <ol style={{ paddingLeft:18, lineHeight:2, fontSize:16, color: T.color.inkMuted }}>
           <li>Download the template above and fill in your meals.</li>
           <li>Import it here — replaces all existing entries.</li>
           <li>Use the <strong style={{ color: T.color.sage }}>Log</strong> tab daily with smart autocomplete.</li>
@@ -926,12 +926,12 @@ function Header({ streak, total, active, onSwitch }) {
         <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:14, flexWrap:"wrap" }}>
           <div style={{ width:42, height:42, background:"rgba(255,255,255,0.14)", borderRadius: T.r.md, display:"flex", alignItems:"center", justifyContent:"center", fontSize:22, flexShrink:0 }}>🥗</div>
           <div>
-            <div style={{ fontFamily: T.font.display, fontSize:28, fontWeight:700, color:"#fff", letterSpacing:"-.5px", lineHeight:1 }}>BiteBook</div>
-            <div style={{ fontSize:10, color:"rgba(255,255,255,.6)", letterSpacing:"1.3px", textTransform:"uppercase", marginTop:2 }}>Your daily food log</div>
+            <div style={{ fontFamily: T.font.display, fontSize:48, fontWeight:700, color:"#fff", letterSpacing:"-.5px", lineHeight:1 }}>BiteBook</div>
+            <div style={{ fontSize:16, color:"rgba(255,255,255,.6)", letterSpacing:"1.3px", textTransform:"uppercase", marginTop:2 }}>Your daily food log</div>
           </div>
           <div style={{ marginLeft:"auto", display:"flex", gap:7, flexWrap:"wrap" }}>
             {[`${total} meals`, streak > 0 ? `${streak}d streak 🔥` : "Start a streak!"].map(t => (
-              <span key={t} style={{ background:"rgba(255,255,255,.14)", color:"rgba(255,255,255,.9)", fontSize:11, fontWeight:500, padding:"4px 12px", borderRadius: T.r.full, border:"1px solid rgba(255,255,255,.2)" }}>{t}</span>
+              <span key={t} style={{ background:"rgba(255,255,255,.14)", color:"rgba(255,255,255,.9)", fontSize:16, fontWeight:500, padding:"4px 12px", borderRadius: T.r.full, border:"1px solid rgba(255,255,255,.2)" }}>{t}</span>
             ))}
           </div>
         </div>
@@ -945,7 +945,7 @@ function Header({ streak, total, active, onSwitch }) {
                 padding:"9px 16px", background: on ? T.color.white : "transparent",
                 color: on ? T.color.sage : "rgba(255,255,255,.75)",
                 border:"none", borderRadius:`${T.r.md} ${T.r.md} 0 0`,
-                fontFamily: T.font.body, fontSize:13, fontWeight: on ? 600 : 400,
+                fontFamily: T.font.body, fontSize:16, fontWeight: on ? 600 : 400,
                 cursor:"pointer", whiteSpace:"nowrap", transition:"all .14s",
               }}>
                 <span style={{ marginRight:5 }}>{tab.icon}</span>{tab.label}
