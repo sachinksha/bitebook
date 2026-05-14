@@ -36,25 +36,34 @@ All these agents have contributed in some ways or the other to build and iterate
 * See graph for what are the most frequently repeated dishes
 * See graph for who cooks the most
 
+## Screenshots
+<img width="1140" height="947" alt="log" src="https://github.com/user-attachments/assets/c4b9f3d5-9bf3-4e6a-9809-5ffba62863d5" />
+<img width="1140" height="947" alt="calendar" src="https://github.com/user-attachments/assets/cf94dbc3-08a2-40af-a8d8-f34a9c37c66a" />
+<img width="1140" height="947" alt="history" src="https://github.com/user-attachments/assets/606203d9-ebdd-4fa7-a81d-afcf378f979b" />
+<img width="1140" height="947" alt="data" src="https://github.com/user-attachments/assets/dbf0e3c6-c311-419e-842c-b30db8fcd520" />
+<img width="1140" height="947" alt="insights" src="https://github.com/user-attachments/assets/4e288846-bc99-4013-b050-7db7fa4add7f" />
+
+#  Vercel integration
+This project is set to automatically deploy the main branch on updates.
+
+Checkout the output on https://bitebook-six.vercel.app/
+
+It also has build in analytics configured
+
 # Development - Getting started
 
 ```
 npm install
 ```
-then for dev server
+then for dev server deployment to http://localhost:5173
 ```
 npm run dev
 ```
-or for local deployment
+or for local deployment to http://localhost:4173
 ```
 npm run preview
 ```
-
-## Open URL
-http://localhost:3000
-
-
-# Post install - one time setup - for running the app on startup
+# Post install - one time setup - for running the app on your localmachine on startup (for linux/ubuntu)
 
 ## Install global packages
 ```
@@ -65,7 +74,7 @@ npm install -g pm2
 ```
 npm run build
 ```
-## Test the app
+## Test/deploy the app
 ```
 serve dist 3000
 ```
@@ -73,13 +82,11 @@ serve dist 3000
 http://localhost:3000
 
 ## Kill the app after verifying it is working properly
-
 ```
 Ctrl + C
 ```
 
-## Setup the app to run on startup
-
+## Setup the app to run on startup on http://localhost:3000
 ```
 pm2 serve dist 3000
 pm2 save
@@ -89,17 +96,8 @@ pm2 startup
 Follow the instructions for startup, run the command in the terminal
 Now the app will always be up and running even after system reboots
 
-
 ## To remove from startup
-
 ```
 pm2 unstartup
 ```
 Follow the instructions for removing from / unstartup, run the command in the terminal
-
-#  Vercel integration
-This project is set to automatically deploy the main branch on updates.
-
-Checkout the output on https://bitebook-six.vercel.app/
-
-It also has build in analytics configured
