@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./styles/globals.css";
 import * as XLSX from "xlsx";
 import Chart from "chart.js/auto";
+import { Analytics } from "@vercel/analytics/react";
 
 window.XLSX = XLSX;
 window.Chart = Chart;
@@ -61,6 +62,7 @@ export default function BiteBook() {
           </main>
 
           <Toast toast={toast} />
+          <Analytics />
         </MealContext.Provider>
       </ToastContext.Provider>
     </AppContext.Provider>
