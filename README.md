@@ -3,12 +3,12 @@
 
 # Introduction
 I made a webapp using various AI agents for logging daily meals.
-Grok, Claude, Github copilot, Cursor and vercel.
+Grok, Claude, Github copilot, Cursor and Vercel.
 All these agents have contributed in some ways or the other to build and iterate over the app to enhance the features.
 
 ## Users can log three meals per day breakfast lunch and dinner.
 1. Provide a short description for the meal.
-2. Meal was made at Home or Restaurant or skipped the meal altogether.
+2. Select if a meal was made at Home or Restaurant or you skipped the meal altogether.
 3. If ordered from a restaurant (outside food) then assign if it was made by a person or restaurant.
 4. If ordered from a restaurant then select if it was a dine-in or a delivery service.
 5. Optional - drag and drop from previously logged entries. Because often some items are repeated.
@@ -31,7 +31,7 @@ All these agents have contributed in some ways or the other to build and iterate
 ## Insights
 
 * See what was the most repeated dish
-* Get suggestion on what to make next since its been long that dish was made*
+* Get suggestion on what to make next since its been long that dish was made
 * Compare stats on home cooked vs food ordered from outside
 * See graph for what are the most frequently repeated dishes
 * See graph for who cooks the most
