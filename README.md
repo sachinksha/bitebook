@@ -41,7 +41,7 @@ All these agents have contributed in some ways or the other to build and iterate
 <img width="1140" height="947" alt="calendar" src="https://github.com/user-attachments/assets/cf94dbc3-08a2-40af-a8d8-f34a9c37c66a" />
 <img width="1140" height="947" alt="history" src="https://github.com/user-attachments/assets/606203d9-ebdd-4fa7-a81d-afcf378f979b" />
 <img width="1140" height="947" alt="data" src="https://github.com/user-attachments/assets/dbf0e3c6-c311-419e-842c-b30db8fcd520" />
-<img width="1140" height="947" alt="insights" src="https://github.com/user-attachments/assets/4e288846-bc99-4013-b050-7db7fa4add7f" />
+<img width="1140" height="947" alt="insights" src="https://github.com/user-attachments/assets/87c88038-0ee4-445a-94a6-1721e63fd7cc" />
 
 #  Vercel integration
 This project is set to automatically deploy the main branch on updates.
