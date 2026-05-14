@@ -36,6 +36,15 @@ export function MealCard({ meal, existing, onSave }) {
     setSaved(false);
   }, [existing?.date, existing?.meal, meal]);
 
+  // Update madeByType when type changes
+  useEffect(() => {
+    if (type === "Home") {
+      setMadeByType("person");
+    } else if (type === "Ordered") {
+      setMadeByType("restaurant");
+    }
+  }, [type]);
+
   // Pre-fill from sticky context if no existing entry
   useEffect(() => {
     if (!existing && context.mealType === meal) {
@@ -50,7 +59,7 @@ export function MealCard({ meal, existing, onSave }) {
       type,
       dish: type === "Skipped" ? "" : dish,
       preparedBy: type === "Skipped" ? "" : person,
-      madeByType: type === "Ordered" ? madeByType : "person",
+      madeByType,
       orderType: type === "Ordered" ? orderType : "dine-in",
     };
     onSave(entry);

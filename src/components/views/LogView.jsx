@@ -41,12 +41,13 @@ export function LogView() {
         e.dataTransfer.getData("application/json")
       );
       if (data.dish) {
+        const entryType = data.type || "Ordered";
         const entry = {
           meal,
-          type: data.type || "Ordered",
+          type: entryType,
           dish: data.dish || "",
           preparedBy: data.preparedBy || "",
-          madeByType: data.madeByType || "person",
+          madeByType: data.madeByType || (entryType === "Ordered" ? "restaurant" : "person"),
           orderType: data.orderType || "dine-in",
         };
         handleSave(entry);
