@@ -91,3 +91,38 @@
   padding: 2px 4px;
   border-radius: 4px;
 }
+
+.recent-meals-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.recent-meals-page-btn {
+  background: #3d6b50;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.15s ease;
+}
+
+.recent-meals-page-btn:disabled {
+  background: #b5cab8;
+  cursor: not-allowed;
+}
+
+.recent-meals-page-btn:not(:disabled):hover {
+  background: #315943;
+}
+
+.recent-meals-page-info {
+  color: #3d6b50;
+  font-size: 14px;
+  font-weight: 600;
+}
