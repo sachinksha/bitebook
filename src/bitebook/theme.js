@@ -1,0 +1,18 @@
+/** Chart.js + inline meal accents still reference these hex values */
+export const T = {
+  font: { display: "'Source Sans 3', system-ui, sans-serif", body: "'Source Sans 3', system-ui, sans-serif" },
+  color: {
+    sage: "#3d6b50", sageMid: "#5a8f6e", sageLight: "#c8e6d4", sagePale: "#eef7f1",
+    cream: "#faf8f3", creamDark: "#f0ece3", parchment: "#e4dfd5",
+    terra: "#b85c38", terraPale: "#fceee8", amber: "#c47b1a", amberPale: "#fdf3e1",
+    ink: "#1a1714", inkSoft: "#3a3330", inkMuted: "#7a7068",
+    border: "#ddd8cf", borderLight: "#eae6df", white: "#ffffff",
+  },
+  r: { sm: "8px", md: "12px", lg: "16px", xl: "22px", full: "999px" },
+  shadow: { sm: "0 1px 4px rgba(26,23,20,0.07)", md: "0 4px 16px rgba(26,23,20,0.10)", lg: "0 8px 32px rgba(26,23,20,0.15)" },
+  meal: {
+    Breakfast: { color: "#c47b1a", pale: "#fdf3e1", bar: "linear-gradient(90deg,#f59e0b,#fbbf24)" },
+    Lunch:     { color: "#3d6b50", pale: "#eef7f1", bar: "linear-gradient(90deg,#3d6b50,#5a8f6e)" },
+    Dinner:    { color: "#5b52c2", pale: "#eeedf9", bar: "linear-gradient(90deg,#5b52c2,#7c75d8)" },
+  },
+};
