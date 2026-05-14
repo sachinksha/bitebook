@@ -1,0 +1,15 @@
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: #7a7068;
+}
+
+.empty-state-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.empty-state-msg {
+  font-style: italic;
+  font-size: 16px;
+}

@@ -1,0 +1,84 @@
+.history-table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #ddd8cf;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px;
+  font-size: 16px;
+}
+
+.history-th {
+  padding: 9px 12px;
+  background: #faf8f3;
+  color: #7a7068;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: left;
+  border-bottom: 1px solid #ddd8cf;
+  position: sticky;
+  top: 0;
+}
+
+.history-row {
+  transition: background 0.1s;
+}
+
+.history-cell {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eae6df;
+  font-size: 16px;
+}
+
+.history-quick-select {
+  padding: 4px 6px;
+  border: 1px solid #ddd8cf;
+  border-radius: 6px;
+  background: #faf8f3;
+  color: #1a1714;
+  font-size: 14px;
+  font-family: 'Ubuntu', sans-serif;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.history-quick-select:hover {
+  border-color: #3d6b50;
+  background: #ffffff;
+}
+
+.history-quick-select:focus {
+  outline: none;
+  border-color: #3d6b50;
+  box-shadow: 0 0 0 2px rgba(61, 107, 80, 0.1);
+}
+
+.history-edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.45;
+  border-radius: 6px;
+  padding: 2px 5px;
+  transition: opacity 0.15s;
+}
+
+.history-edit-btn:hover {
+  opacity: 1;
+}
+
+.history-entry-count {
+  font-size: 16px;
+  color: #7a7068;
+  background: #f0ece3;
+  padding: 3px 10px;
+  border-radius: 999px;
+}

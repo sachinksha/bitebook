@@ -1,0 +1,22 @@
+.type-pills {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.type-pill {
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1.5px solid;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.14s;
+  background: #ffffff;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.type-pill-active {
+  background: var(--active-bg);
+  color: var(--active-color);
+}
