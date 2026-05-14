@@ -1,0 +1,9 @@
+.field-label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: #7a7068;
+  margin-bottom: 5px;
+}

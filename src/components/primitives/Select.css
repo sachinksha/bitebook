@@ -1,0 +1,22 @@
+.sel {
+  width: 100%;
+  padding: 9px 32px 9px 12px;
+  border: 1.5px solid;
+  border-radius: 12px;
+  appearance: none;
+  cursor: pointer;
+  color: #1a1714;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.15s;
+  font-family: 'Ubuntu', sans-serif;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M.5 1l5 5 5-5' stroke='%237a7068' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 11px center;
+  background-size: 11px 7px;
+  padding-right: 32px;
+}
+
+.sel-focused {
+  background-color: #ffffff;
+}

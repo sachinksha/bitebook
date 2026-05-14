@@ -1,0 +1,108 @@
+.header {
+  background: #3d6b50;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.18);
+}
+
+.header-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 20px 0;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.header-logo {
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.header-title-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  font-family: 'Ubuntu', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.header-subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.header-stats {
+  margin-left: auto;
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.header-stat {
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header-tabs {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.header-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.header-tab {
+  padding: 9px 16px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.75);
+  border: none;
+  border-radius: 12px 12px 0 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.14s;
+}
+
+.header-tab-active {
+  background: #ffffff;
+  color: #3d6b50;
+  font-weight: 600;
+}
+
+.header-tab:hover:not(.header-tab-active) {
+  color: rgba(255, 255, 255, 0.95);
+}

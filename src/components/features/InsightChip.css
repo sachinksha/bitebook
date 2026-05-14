@@ -1,0 +1,28 @@
+.insight-chip {
+  border-radius: 16px;
+  padding: 14px 16px;
+  border: 1px solid;
+}
+
+.insight-chip-label {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: inherit;
+  margin-bottom: 5px;
+}
+
+.insight-chip-value {
+  font-family: 'Ubuntu', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1714;
+  line-height: 1.2;
+  margin-bottom: 3px;
+}
+
+.insight-chip-sub {
+  font-size: 16px;
+  color: #7a7068;
+}

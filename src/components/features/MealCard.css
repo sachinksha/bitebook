@@ -1,0 +1,60 @@
+.meal-card {
+  background: #ffffff;
+  border: 1.5px solid;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.meal-card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.meal-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.meal-card-icon {
+  font-size: 20px;
+}
+
+.meal-card-title {
+  font-family: 'Ubuntu', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1714;
+}
+
+.meal-card-saved {
+  margin-left: auto;
+  background: #bbf7d0;
+  color: #15803d;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+
+.meal-card-logged {
+  margin-left: auto;
+  font-size: 16px;
+  color: #7a7068;
+}
+
+.meal-card-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}

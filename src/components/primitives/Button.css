@@ -1,0 +1,39 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.14s;
+  white-space: nowrap;
+  font-family: 'Ubuntu', sans-serif;
+  border: 1.5px solid;
+  font-size: 16px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-size-sm {
+  padding: 5px 11px;
+  font-size: 14px;
+}
+
+.btn-size-md {
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+.btn-size-lg {
+  padding: 11px 22px;
+  font-size: 16px;
+}
+
+.btn-full {
+  width: 100%;
+}

@@ -1,0 +1,51 @@
+.data-view-dropzone {
+  border: 2px dashed #5a8f6e;
+  border-radius: 16px;
+  padding: 32px 20px;
+  text-align: center;
+  background: #faf8f3;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.data-view-dropzone.dragging {
+  border-color: #3d6b50;
+  background: #eef7f1;
+}
+
+.data-view-dropzone-title {
+  font-weight: 600;
+  color: #3a3330;
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+.data-view-dropzone-subtitle {
+  font-size: 16px;
+  color: #3d6b50;
+}
+
+.data-view-info {
+  padding: 16px 18px;
+  background: #f0ece3;
+  border-radius: 16px;
+  border: 1px solid #ddd8cf;
+}
+
+.data-view-info-title {
+  font-family: 'Ubuntu', serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.data-view-info-list {
+  padding-left: 18px;
+  line-height: 2;
+  font-size: 16px;
+  color: #7a7068;
+}
+
+.data-view-info-list strong {
+  color: #3d6b50;
+}
