@@ -6,6 +6,8 @@ import { useApp } from "../../context/contexts.js";
 import { Card, SectionHeading, Btn, Badge } from "../primitives/index.js";
 import "./CalendarView.css";
 
+const MEAL_ICONS = { Breakfast: "🌅", Lunch: "☀️", Dinner: "🌙" };
+
 export function CalendarView() {
   const { data } = useApp();
   const [offset, setOffset] = useState(0);
@@ -13,9 +15,9 @@ export function CalendarView() {
   const days = useMemo(() => {
     const end = new Date();
     end.setDate(end.getDate() - offset);
-    return Array.from({ length: 14 }, (_, i) => {
+    return Array.from({ length: 7 }, (_, i) => {
       const d = new Date(end);
-      d.setDate(d.getDate() - 13 + i);
+      d.setDate(d.getDate() - 6 + i);
       return d.toISOString().split("T")[0];
     });
   }, [offset]);
@@ -29,36 +31,23 @@ export function CalendarView() {
     return m;
   }, [data]);
 
-  const Cell = ({ e }) => {
-    if (!e) return <span style={{ color: THEME.color.parchment }}>—</span>;
-    if (e.type === "Skipped") return <Badge type="Skipped" />;
+  const MealCard = ({ entry, icon }) => {
+    if (!entry) return null;
+    if (entry.type === "Skipped") return <div className="calendar-meal-skipped">Skipped</div>;
     return (
-      <div>
-        <Badge type={e.type} />
-        {e.dish && (
-          <div
-            style={{
-              fontSize: 16,
-              color: THEME.color.inkSoft,
-              marginTop: 3,
-            }}
-          >
-            {e.dish}
-          </div>
-        )}
-        {e.preparedBy && (
-          <div
-            style={{
-              fontSize: 16,
-              color: THEME.color.inkMuted,
-              marginTop: 1,
-            }}
-          >
-            {e.preparedBy}
-            {e.type === "Ordered" && (
-              <span style={{ marginLeft: 4 }}>
-                {e.madeByType === "restaurant" ? "🏪" : "🧑"}
-                {e.orderType === "delivery" ? "📦" : "🍽"}
+      <div className="calendar-meal-info">
+        <div className="calendar-meal-header">
+          <span className="calendar-meal-icon">{icon}</span>
+          <Badge type={entry.type} />
+        </div>
+        {entry.dish && <div className="calendar-meal-dish">{entry.dish}</div>}
+        {entry.preparedBy && (
+          <div className="calendar-meal-by">
+            {entry.preparedBy}
+            {entry.type === "Ordered" && (
+              <span className="calendar-meal-icons">
+                {entry.madeByType === "restaurant" ? "🏪" : "🧑"}
+                {entry.orderType === "delivery" ? "📦" : "🍽"}
               </span>
             )}
           </div>
@@ -67,31 +56,21 @@ export function CalendarView() {
     );
   };
 
-  const TH = ({ ch }) => (
-    <th className="calendar-th">{ch}</th>
-  );
-
   return (
     <Card>
       <SectionHeading
         icon="🗓"
         iconBg={THEME.color.amberPale}
         aside={
-          <div
-            style={{
-              display: "flex",
-              gap: 6,
-              flexWrap: "wrap",
-            }}
-          >
-            <Btn size="sm" onClick={() => setOffset((o) => o + 14)}>
-              ← Earlier
+          <div className="calendar-nav-buttons">
+            <Btn size="sm" onClick={() => setOffset((o) => o + 7)}>
+              ← Prev
             </Btn>
             <Btn
               size="sm"
-              onClick={() => setOffset((o) => Math.max(0, o - 14))}
+              onClick={() => setOffset((o) => Math.max(0, o - 7))}
             >
-              Later →
+              Next →
             </Btn>
             <Btn
               size="sm"
@@ -103,65 +82,34 @@ export function CalendarView() {
           </div>
         }
       >
-        Last 2 Weeks
+        Weekly View
       </SectionHeading>
 
-      <div className="calendar-table-container">
-        <table className="calendar-table">
-          <thead>
-            <tr>
-              <TH ch="Date" />
-              <TH ch="🌅 Breakfast" />
-              <TH ch="☀️ Lunch" />
-              <TH ch="🌙 Dinner" />
-            </tr>
-          </thead>
-          <tbody>
-            {days.map((ds, i) => {
-              const isToday = ds === today();
-              const e = byDate[ds] || {};
-              return (
-                <tr
-                  key={ds}
-                  style={{
-                    background: isToday
-                      ? THEME.color.sagePale
-                      : i % 2 === 0
-                      ? THEME.color.white
-                      : THEME.color.cream,
-                  }}
-                >
-                  <td className="calendar-date-cell"
-                    style={{
-                      fontWeight: isToday ? 600 : 400,
-                      color: isToday ? THEME.color.sage : THEME.color.ink,
-                    }}
-                  >
-                    {fmtWday(ds)}, {fmtShort(ds)}
-                    {isToday && (
-                      <span
-                        style={{
-                          marginLeft: 6,
-                          display: "inline-block",
-                          width: 6,
-                          height: 6,
-                          borderRadius: "50%",
-                          background: THEME.color.sage,
-                          verticalAlign: "middle",
-                        }}
-                      />
-                    )}
-                  </td>
-                  {["Breakfast", "Lunch", "Dinner"].map((m) => (
-                    <td key={m} className="calendar-meal-cell">
-                      <Cell e={e[m]} />
-                    </td>
-                  ))}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div className="calendar-grid">
+        {days.map((ds) => {
+          const isToday = ds === today();
+          const meals = byDate[ds] || {};
+          const mealCount = Object.keys(meals).length;
+          return (
+            <div key={ds} className={`calendar-day-card ${isToday ? "today" : ""}`}>
+              <div className="calendar-day-header">
+                <div className="calendar-day-date">
+                  <div className="calendar-day-name">{fmtWday(ds).slice(0, 3)}</div>
+                  <div className="calendar-day-num">{fmtShort(ds).split("/")[0]}</div>
+                </div>
+                <div className="calendar-day-summary">
+                  {mealCount === 0 && <span className="calendar-no-meals">No meals</span>}
+                  {mealCount > 0 && <span className="calendar-meal-count">{mealCount} logged</span>}
+                </div>
+              </div>
+              <div className="calendar-day-meals">
+                {["Breakfast", "Lunch", "Dinner"].map((meal) => (
+                  <MealCard key={meal} entry={meals[meal]} icon={MEAL_ICONS[meal]} />
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </Card>
   );

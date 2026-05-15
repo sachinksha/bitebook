@@ -1,39 +1,152 @@
-.calendar-table-container {
-  overflow-x: auto;
-  border-radius: 12px;
+/* Navigation buttons */
+.calendar-nav-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* Grid layout - responsive card-based */
+.calendar-grid {
+  display: grid;
+  gap: 12px;
+  padding: 12px 0;
+  grid-template-columns: 1fr;
+}
+
+/* Tablet breakpoint: 2 columns */
+@media (min-width: 640px) {
+  .calendar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop breakpoint: 3 columns */
+@media (min-width: 1024px) {
+  .calendar-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Day card container */
+.calendar-day-card {
   border: 1px solid #ddd8cf;
+  border-radius: 8px;
+  padding: 12px;
+  background: #fafaf8;
+  transition: box-shadow 0.2s;
 }
 
-.calendar-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 520px;
-  font-size: 16px;
+.calendar-day-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.calendar-th {
-  padding: 9px 12px;
-  background: #faf8f3;
-  color: #7a7068;
-  font-size: 16px;
+.calendar-day-card.today {
+  background: #f0f9f4;
+  border-color: #7fb597;
+  border-width: 2px;
+  padding: 11px;
+}
+
+/* Day header with date and summary */
+.calendar-day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e8e4da;
+}
+
+.calendar-day-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.calendar-day-name {
+  font-size: 12px;
   font-weight: 600;
+  color: #7a7068;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  text-align: left;
-  border-bottom: 1px solid #ddd8cf;
-  white-space: nowrap;
 }
 
-.calendar-date-cell {
-  padding: 10px 12px;
-  white-space: nowrap;
-  font-size: 16px;
-  border-bottom: 1px solid #eae6df;
+.calendar-day-num {
+  font-size: 18px;
+  font-weight: 600;
+  color: #3a3a38;
 }
 
-.calendar-meal-cell {
-  padding: 10px 12px;
-  border-bottom: 1px solid #eae6df;
-  vertical-align: top;
-  font-size: 16px;
+.calendar-day-summary {
+  text-align: right;
+}
+
+.calendar-no-meals {
+  font-size: 13px;
+  color: #a8a39a;
+  font-style: italic;
+}
+
+.calendar-meal-count {
+  font-size: 13px;
+  font-weight: 500;
+  color: #7a7068;
+}
+
+/* Meal cards container */
+.calendar-day-meals {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Individual meal info */
+.calendar-meal-info {
+  padding: 8px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #ede9e0;
+  font-size: 14px;
+}
+
+.calendar-meal-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.calendar-meal-icon {
+  font-size: 18px;
+}
+
+.calendar-meal-dish {
+  font-weight: 500;
+  color: #3a3a38;
+  margin-bottom: 2px;
+}
+
+.calendar-meal-by {
+  font-size: 12px;
+  color: #7a7068;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.calendar-meal-icons {
+  display: inline-flex;
+  gap: 2px;
+  font-size: 14px;
+}
+
+.calendar-meal-skipped {
+  padding: 8px;
+  font-size: 13px;
+  color: #a8a39a;
+  font-style: italic;
+  text-align: center;
+  background: #fafaf8;
+  border-radius: 6px;
 }

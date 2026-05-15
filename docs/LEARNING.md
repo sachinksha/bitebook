@@ -135,7 +135,105 @@ The project is also deployed on Vercel, which is well-suited for React apps and 
 - Firebase docs: https://firebase.google.com/docs
 - Vite docs: https://vitejs.dev
 
-## 7. What to learn next
+## 7. Information Architecture & Responsive Design
+
+Responsive design ensures web apps work well on phones, tablets, and desktops. BiteBook demonstrates modern patterns for fitting rich information on screens of all sizes.
+
+### Card-based layouts for mobile
+Instead of large data tables that require horizontal scrolling on phones, BiteBook uses **card-based layouts**:
+- Each piece of information (meal entry, calendar day) becomes a discrete, vertically-stacking card
+- Cards have generous padding and touch-friendly tap targets (44px minimum height)
+- Visual hierarchy guides the eye: meal type → dish name → details → actions
+
+**Calendar View example:**
+- Old: 14-day table with 4 columns (horizontal scroll on mobile)
+- New: 7-day card grid showing date + meal icons + prep info
+- Mobile: 1 column (full width cards)
+- Tablet: 2 columns (side-by-side)
+- Desktop: 3 columns (compact view)
+
+**History View example:**
+- Old: 8-column table with all details visible (overwhelming on phones)
+- New: Collapsible entry cards grouped by date
+  - Summary row: meal icon + name + type badge + dish
+  - Click to expand: show preparedBy, made-by, order type
+  - Action buttons: edit, delete
+- Mobile: Single-column stacked cards with large touch targets
+- Desktop: Same layout (no multi-column squeeze)
+
+### CSS Grid for responsive layouts
+CSS Grid is powerful for responsive layouts without media queries on every element:
+
+```css
+.calendar-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .calendar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .calendar-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+```
+
+This single breakpoint rule handles responsive layout for all children. Compare to flexbox, which often needs more media queries.
+
+### Information hierarchy & progressive disclosure
+Too much information overwhelms users. BiteBook uses **progressive disclosure** (show summary, hide details):
+- History entries show only: meal icon + name + badge + dish
+- User clicks to expand and see: preparedBy, made-by type, order type
+- All edit/delete actions in the expanded section
+
+This pattern scales to phones without overwhelming the screen.
+
+### Touch-friendly UI
+Phones use touch, not mouse. BiteBook applies touch-friendly principles:
+- Minimum tap target: 44×44px (CSS `min-height: 44px`)
+- Padding around interactive elements to avoid accidental taps
+- No hover states on mobile (touch devices don't hover)
+- Clear, large icons (meal emojis: 🌅 ☀️ 🌙)
+
+### Learning from Amazon mobile design
+Amazon's mobile app demonstrates how to fit large amounts of information on small screens:
+1. **Information density**: Show key data (price, rating) at a glance; hide details behind layers
+2. **Card-based layout**: Each product is a card with image, title, price, rating
+3. **Scroll, don't horizontally swipe**: Mobile is vertical; horizontal scroll is confusing
+4. **Progressive disclosure**: Click cards to expand details; modals for complex interactions
+5. **Consistent spacing**: Generous gaps between cards make touch targets clear
+
+BiteBook applies these patterns:
+- Cards stack vertically (no horizontal scroll)
+- Key info (date, meal type) visible on first glance
+- Details revealed on tap
+- Consistent spacing with CSS Grid gap
+
+### Responsive design best practices
+1. **Mobile first**: Start with mobile layout (1 column), then add media queries for larger screens
+2. **Breakpoints**: Use standard breakpoints (640px tablet, 1024px desktop)
+3. **Viewport meta tag**: Ensure `<meta name="viewport" content="width=device-width, initial-scale=1">`
+4. **Flexible images**: Use `max-width: 100%` to prevent overflow
+5. **Test on real devices**: Emulator sizes don't match real phone behavior
+
+### Performance & accessibility
+Responsive design also improves performance:
+- Simpler layouts = fewer CSS calculations
+- Vertical scrolling is faster than horizontal layout shifts
+- Fewer media queries = faster style recalculation
+
+Accessibility also benefits:
+- Large touch targets help users with motor control challenges
+- Clear visual hierarchy helps users understand content structure
+- Grouped information (by date) helps users navigate complex data
+
+## 8. What to learn next
 
 If you want to go deeper, study:
 - component composition and hooks patterns
@@ -144,3 +242,6 @@ If you want to go deeper, study:
 - offline-first apps and service workers
 - backend APIs and serverless functions
 - testing with React Testing Library and Jest
+- CSS Grid and Flexbox layout deep dive
+- web performance optimization
+- accessibility standards (WCAG 2.1)
