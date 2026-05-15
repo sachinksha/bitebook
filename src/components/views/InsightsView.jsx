@@ -27,30 +27,70 @@ export function InsightsView() {
   }, [data, from, to]);
 
   const stats = useMemo(() => {
-    const dc = {},
-      lp = {};
+    const dishMap = {};
     filtered.forEach((r) => {
-      if (r.dish) {
-        dc[r.dish] = (dc[r.dish] || 0) + 1;
-        lp[r.dish] = r.date;
+      const dish = r.dish?.trim();
+      if (!dish) return;
+      const date = new Date(r.date);
+      if (!dishMap[dish]) {
+        dishMap[dish] = { dish, count: 0, lastDate: date };
+      }
+      dishMap[dish].count += 1;
+      if (date > dishMap[dish].lastDate) {
+        dishMap[dish].lastDate = date;
       }
     });
-    const topDish = Object.entries(dc).sort((a, b) => b[1] - a[1])[0];
-    let leastRecent = "",
-      maxDays = 0;
+
     const now = new Date();
-    Object.keys(lp).forEach((d) => {
-      const days = Math.floor((now - new Date(lp[d])) / 86400000);
-      if (days > maxDays) {
-        maxDays = days;
-        leastRecent = d;
-      }
+    const dishHistory = Object.values(dishMap).map((item) => {
+      const daysSince = Math.floor((now - item.lastDate) / 86400000);
+      return { ...item, daysSince };
     });
+
+    const topDish = Object.values(dishMap)
+      .sort((a, b) => b.count - a.count)[0] || null;
+
+    const leastRecent = dishHistory
+      .sort((a, b) => b.daysSince - a.daysSince)[0]?.dish || "";
+    const maxDays = dishHistory
+      .sort((a, b) => b.daysSince - a.daysSince)[0]?.daysSince || 0;
+
+    const eligible = dishHistory.filter((item) => item.daysSince >= 4);
+    const orderedEligible = eligible.sort(
+      (a, b) => b.daysSince - a.daysSince || a.dish.localeCompare(b.dish)
+    );
+    const pickAlternate = orderedEligible.filter((_, idx) => idx % 2 === 0);
+    let suggestions = pickAlternate.slice(0, 3).map((item) => item.dish);
+    if (suggestions.length < 3) {
+      suggestions = suggestions.concat(
+        orderedEligible
+          .filter((_, idx) => idx % 2 !== 0)
+          .slice(0, 3 - suggestions.length)
+          .map((item) => item.dish)
+      );
+    }
+
+    const notEnoughData =
+      filtered.length < 6 ||
+      Object.keys(dishMap).length < 3 ||
+      suggestions.length < 3;
+
+    const suggestionMessage = notEnoughData
+      ? Object.keys(dishMap).length < 3
+        ? "Not enough varied history to recommend 3 dishes yet. Keep logging meals."
+        : filtered.length < 6
+        ? "Log more meals over a few days to get stronger recommendations."
+        : "Wait 3-4 days before repeating the same dish to get a full set of suggestions."
+      : "These dishes are popular and haven’t been eaten in the last 3-4 days.";
+
     const n = filtered.length;
     return {
       topDish,
       leastRecent,
       maxDays,
+      suggestions,
+      suggestCount: suggestions.length,
+      suggestionMessage,
       homePct: n
         ? Math.round(
             (filtered.filter((r) => r.type === "Home").length / n) * 100
@@ -227,10 +267,10 @@ export function InsightsView() {
         <InsightChip
           emoji="🔥"
           label="Most repeated"
-          value={stats.topDish?.[0]}
+          value={stats.topDish?.dish || "—"}
           sub={
             stats.topDish
-              ? `${stats.topDish[1]}× logged`
+              ? `${stats.topDish.count}× logged`
               : "No data"
           }
           bg={THEME.color.sagePale}
@@ -256,6 +296,29 @@ export function InsightsView() {
           bg={THEME.color.creamDark}
           accent={THEME.color.inkMuted}
         />
+      </div>
+
+      <div className="insights-suggestions">
+        <div className="insights-suggestions-header">
+          <div className="insights-suggestions-title">Cook next</div>
+          <div className="insights-suggestions-note">
+            {stats.suggestionMessage}
+          </div>
+        </div>
+        {stats.suggestions.length ? (
+          <ul className="insights-suggestion-list">
+            {stats.suggestions.map((dish) => (
+              <li key={dish} className="insights-suggestion-item">
+                <span className="insights-suggestion-dot" />
+                {dish}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="insights-suggestion-empty">
+            {stats.suggestionMessage}
+          </div>
+        )}
       </div>
 
       {/* Charts */}
