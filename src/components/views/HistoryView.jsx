@@ -24,14 +24,14 @@ export function HistoryView() {
   );
 
   const handleSave = (idx, entry) => {
-    updateEntry(idx, entry);
+    updateEntry(data[idx].id, entry);
     setEditIdx(null);
     show("Entry updated");
   };
 
   const handleDel = (idx) => {
     if (!confirm("Delete this entry?")) return;
-    deleteEntry(idx);
+    deleteEntry(data[idx].id);
     setEditIdx(null);
     show("Deleted", "error");
   };
@@ -39,7 +39,7 @@ export function HistoryView() {
   const handleQuickEdit = useCallback(
     (idx, field, value) => {
       const entry = { ...data[idx], [field]: value };
-      updateEntry(idx, entry);
+      updateEntry(data[idx].id, entry);
       show(`${field} updated`);
     },
     [data, updateEntry, show]
