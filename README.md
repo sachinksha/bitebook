@@ -1,103 +1,186 @@
-
 # 🥗 BiteBook
 
-# Introduction
-I made a webapp using various AI agents for logging daily meals.
-Grok, Claude, Github copilot, Cursor and Vercel.
-All these agents have contributed in some ways or the other to build and iterate over the app to enhance the features.
+BiteBook is a modern React web application for tracking daily meals. It demonstrates modern web development best practices with React, Firebase, and Vite while providing real, user-facing functionality.
 
-## Users can log three meals per day breakfast lunch and dinner.
-1. Provide a short description for the meal.
-2. Select if a meal was made at Home or Restaurant or you skipped the meal altogether.
-3. If ordered from a restaurant (outside food) then assign if it was made by a person or restaurant.
-4. If ordered from a restaurant then select if it was a dine-in or a delivery service.
-5. Optional - drag and drop from previously logged entries. Because often some items are repeated.
+## Project overview
 
-## Data
-* Get a template excel file to make data entries.
-* Export all the data to excel for saving (I upload this to a private github repository to preserve it).
-* Import excel previous data.
+BiteBook allows users to:
+- Log breakfast, lunch, and dinner entries
+- Mark meals as home-cooked, ordered, or skipped
+- Store and retrieve data securely per user via Firebase
+- View meal history, calendar analytics, and insights
+- Import and export data using Excel files
+- Login with Google using Firebase Authentication
 
-## Calendar view
+## Why this project is educational
 
-* Get a glance of what was made/consumed in the last 2 weeks.
-* This can be scrolled to see older data.
+This repo is designed to teach several important web development concepts:
+- React component architecture and hooks
+- Context-based state sharing
+- Cloud backend integration using Firebase Auth and Firestore
+- Build tooling with Vite
+- Error handling and mobile-safe storage fallbacks
+- Deployment on Vercel
 
-## History view
-* See what were the last entries made to the app.
-* Last entry is at the top.
-* You can edit and correct any records here.
+## Live demo
 
-## Insights
+The app is deployed at:
+- https://bitebook-six.vercel.app/
 
-* See what was the most repeated dish
-* Get suggestion on what to make next since its been long that dish was made
-* Compare stats on home cooked vs food ordered from outside
-* See graph for what are the most frequently repeated dishes
-* See graph for who cooks the most
+## Feature summary
 
-## Screenshots
-<img width="1140" height="947" alt="log" src="https://github.com/user-attachments/assets/c4b9f3d5-9bf3-4e6a-9809-5ffba62863d5" />
-<img width="1140" height="947" alt="calendar" src="https://github.com/user-attachments/assets/cf94dbc3-08a2-40af-a8d8-f34a9c37c66a" />
-<img width="1140" height="947" alt="history" src="https://github.com/user-attachments/assets/606203d9-ebdd-4fa7-a81d-afcf378f979b" />
-<img width="1140" height="947" alt="data" src="https://github.com/user-attachments/assets/dbf0e3c6-c311-419e-842c-b30db8fcd520" />
-<img width="1140" height="947" alt="insights" src="https://github.com/user-attachments/assets/87c88038-0ee4-445a-94a6-1721e63fd7cc" />
+### Meal logging
+- Log meal descriptions with meal type, status, and preparation details
+- Support home cooking, restaurant orders, and skipped meals
+- Add order details for outside food (dine-in or delivery)
+- Quickly reuse previous meal entries with drag-and-drop suggestions
 
-#  Vercel integration
-This project is set to automatically deploy the main branch on updates.
+### Data management
+- Export meal history to an Excel file
+- Import meal data from Excel using a template structure
+- Replace all existing data with imported rows
+- Clear your meal logs entirely for the signed-in user
 
-Checkout the output on https://bitebook-six.vercel.app/
+### Insights and visualizations
+- See a calendar view of recent meal activity
+- View history with edit and delete options
+- Analyze top dishes and meal patterns
+- Track who cooks most often and how frequently items are repeated
 
-It also has build in analytics configured
+## Technology stack
 
-# Development - Getting started
+- **React 19** — component-driven UI
+- **Vite** — fast dev server and build tool
+- **Firebase Auth** — Google login and authentication
+- **Firebase Firestore** — cloud database for meal storage
+- **Chart.js** — data visualization
+- **XLSX** — Excel import/export
+- **Vercel** — deployment platform
 
-```
+## File structure
+
+Important files and folders:
+- `src/main.jsx` — entry point, mounts the React app, wraps it in `AuthProvider`
+- `src/App.jsx` — root app component, user gating, view rendering
+- `src/context/` — shared React contexts and authentication provider
+- `src/hooks/` — custom hook logic for data and UI state
+- `src/components/` — UI building blocks and page views
+- `src/utils/` — helper functions for persistence and formatting
+- `src/firebase.js` — Firebase project initialization
+- `docs/LEARNING.md` — in-depth documentation and learning guide
+
+## Setup and running locally
+
+Install dependencies:
+```bash
 npm install
 ```
-then for dev server deployment to http://localhost:5173
-```
+
+Run the development server:
+```bash
 npm run dev
 ```
-or for local deployment to http://localhost:4173
-```
-npm run preview
-```
-# Post install - one time setup - for running the app on your localmachine on startup (for linux/ubuntu)
 
-## Install global packages
-```
-npm install -g serve
-npm install -g pm2
-```
-## Build the app - for prod build - to the 'dist' folder
-```
+Build the production bundle:
+```bash
 npm run build
 ```
-## Test/deploy the app
-```
-serve dist 3000
-```
-## Open URL
-http://localhost:3000
 
-## Kill the app after verifying it is working properly
-```
-Ctrl + C
+Preview the production build locally:
+```bash
+npm run preview
 ```
 
-## Setup the app to run on startup on http://localhost:3000
-```
-pm2 serve dist 3000
-pm2 save
-pm2 startup
+## Firebase setup
+
+To run the app with Firebase locally:
+1. Create a Firebase project at https://console.firebase.google.com/
+2. Enable Google authentication in `Authentication` -> `Sign-in method`
+3. Create a Firestore database in your Firebase project
+4. Add your Vercel or local domain under `Authentication` -> `Authorized domains`
+5. Update `src/firebase.js` with your Firebase config values
+
+Example `src/firebase.js` config:
+```js
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID",
+};
 ```
 
-Follow the instructions for startup, run the command in the terminal
-Now the app will always be up and running even after system reboots
+### Firestore security rules
 
-## To remove from startup
+Use these rules to ensure users only access their own meals:
+```js
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /meals/{meal} {
+      allow read, write: if request.auth != null && request.auth.uid == resource.data.userId;
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
+    }
+  }
+}
 ```
-pm2 unstartup
+
+## Deployment
+
+This app is ready for Vercel deployment and currently lives at:
+- https://bitebook-six.vercel.app/
+
+The Vercel deployment uses the `main` branch and automatically rebuilds when updated.
+
+## Learning resources
+
+This repo is not just an app — it is also a learning resource.
+- React docs: https://react.dev/
+- JavaScript guide: https://javascript.info/
+- Firebase docs: https://firebase.google.com/docs
+- Vite docs: https://vitejs.dev/
+
+## Learn from this project
+
+For a deeper explanation of the app architecture and concepts used here, read:
+- [docs/LEARNING.md](docs/LEARNING.md)
+
+## Useful commands
+
+### Local development
+```bash
+npm run dev
 ```
-Follow the instructions for removing from / unstartup, run the command in the terminal
+
+### Production build
+```bash
+npm run build
+```
+
+### Preview production build
+```bash
+npm run preview
+```
+
+### Serve built app locally
+```bash
+npx serve dist 3000
+```
+
+## Notes
+
+- Google login is required to use the app
+- Meal data is saved per user in Firebase Firestore
+- The app is built with modern React hooks and context
+- Storage fallbacks are included for browsers that restrict session/local storage
+
+## Contributing ideas
+
+If you want to extend this project, possible improvements include:
+- adding offline caching
+- using React Router for deeper navigation
+- adding user settings/profile pages
+- using server-side rendering or serverless functions
+- improving import validation and error handling
