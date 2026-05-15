@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 
 /**
  * Sticky meal context state
@@ -8,41 +8,44 @@ import { useState, useCallback, useEffect } from "react";
 export function useMealContext() {
   const STORAGE_KEY = "bitebook_mealContext";
 
-  const [context, setContextState] = useState(() => {
+  const readStorage = () => {
     try {
-      const stored = sessionStorage.getItem(STORAGE_KEY);
-      return stored
-        ? JSON.parse(stored)
-        : {
-            mealType: null,
-            madeByType: "person",
-            orderType: "dine-in",
-          };
+      return sessionStorage.getItem(STORAGE_KEY);
     } catch {
-      return {
-        mealType: null,
-        madeByType: "person",
-        orderType: "dine-in",
-      };
+      return null;
     }
+  };
+
+  const writeStorage = (value) => {
+    try {
+      sessionStorage.setItem(STORAGE_KEY, value);
+    } catch {
+      // Ignore storage failures on restricted browsers/devices
+    }
+  };
+
+  const emptyContext = {
+    mealType: null,
+    madeByType: "person",
+    orderType: "dine-in",
+  };
+
+  const [context, setContextState] = useState(() => {
+    const stored = readStorage();
+    return stored ? JSON.parse(stored) : emptyContext;
   });
 
   const setContext = useCallback((partial) => {
     setContextState((prev) => {
       const next = { ...prev, ...partial };
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      writeStorage(JSON.stringify(next));
       return next;
     });
   }, []);
 
   const resetContext = useCallback(() => {
-    const empty = {
-      mealType: null,
-      madeByType: "person",
-      orderType: "dine-in",
-    };
-    setContextState(empty);
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(empty));
+    setContextState(emptyContext);
+    writeStorage(JSON.stringify(emptyContext));
   }, []);
 
   return { context, setContext, resetContext };

@@ -35,5 +35,9 @@ export const migrateData = (data) => {
 };
 
 export const persistData = (data) => {
-  localStorage.setItem(KEY, JSON.stringify(data));
+  try {
+    localStorage.setItem(KEY, JSON.stringify(data));
+  } catch {
+    // Ignore write failures when localStorage is unavailable
+  }
 };
