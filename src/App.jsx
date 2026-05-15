@@ -30,7 +30,7 @@ const views = {
 };
 
 export default function BiteBook() {
-  const { user, loading, login } = useAuth();
+  const { user, loading, login, authError } = useAuth();
   const foodData = useFoodData();
   const { toast, show } = useToast();
   const mealContext = useMealContext();
@@ -46,6 +46,17 @@ export default function BiteBook() {
         <h1>Welcome to BiteBook</h1>
         <p>Please log in with Google to access your meal data.</p>
         <button onClick={login} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>Login with Google</button>
+        <div style={{ marginTop: 18, color: '#d33', maxWidth: 520, margin: '18px auto 0' }}>
+          {authError ? (
+            <>
+              <strong>Authentication issue:</strong> {authError}
+            </>
+          ) : (
+            <>
+              If you are on iOS or Safari, make sure browser storage is enabled and you are not in Private mode.
+            </>
+          )}
+        </div>
       </div>
     );
   }
