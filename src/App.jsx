@@ -30,7 +30,7 @@ const views = {
 };
 
 export default function BiteBook() {
-  const { user, loading } = useAuth();
+  const { user, loading, login } = useAuth();
   const foodData = useFoodData();
   const { toast, show } = useToast();
   const mealContext = useMealContext();
@@ -45,6 +45,7 @@ export default function BiteBook() {
       <div style={{ textAlign: 'center', padding: '50px' }}>
         <h1>Welcome to BiteBook</h1>
         <p>Please log in with Google to access your meal data.</p>
+        <button onClick={login} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>Login with Google</button>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { useAuth } from "../context/contexts";
 import { db } from "../firebase";
-import { collection, addDoc, updateDoc, deleteDoc, doc, getDocs, query, where, orderBy } from "firebase/firestore";
+import { collection, addDoc, updateDoc, deleteDoc, doc, getDocs, query, where, writeBatch, orderBy } from "firebase/firestore";
 
 export function useFoodData() {
   const { user } = useAuth();
@@ -76,9 +76,27 @@ export function useFoodData() {
   const replaceAll = useCallback(
     async (rows) => {
       if (!user) return;
-      // This is complex for Firestore, perhaps delete all and add new
-      // For now, skip or implement batch
-      console.warn("replaceAll not implemented for Firestore");
+      try {
+        const batch = writeBatch(db);
+        // Delete all existing meals
+        const q = query(collection(db, "meals"), where("userId", "==", user.uid));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.docs.forEach((doc) => {
+          batch.delete(doc.ref);
+        });
+        // Add new meals
+        rows.forEach((row) => {
+          const newDocRef = doc(collection(db, "meals"));
+          batch.set(newDocRef, { ...row, userId: user.uid });
+        });
+        await batch.commit();
+        // Update local state
+        const newMeals = rows.map((row, index) => ({ id: `temp-${index}`, ...row, userId: user.uid }));
+        newMeals.sort((a, b) => new Date(b.date) - new Date(a.date));
+        setData(newMeals);
+      } catch (error) {
+        console.error("Error replacing all meals:", error);
+      }
     },
     [user]
   );

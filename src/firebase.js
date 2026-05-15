@@ -8,12 +8,13 @@ import { getFirestore } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "your-api-key",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "your-app-id"
+  apiKey: "AIzaSyD_sIBj-oyL6egT7tuseyHRE0ArGYGGCjM",
+  authDomain: "bitebook-app-c772d.firebaseapp.com",
+  projectId: "bitebook-app-c772d",
+  storageBucket: "bitebook-app-c772d.firebasestorage.app",
+  messagingSenderId: "352388507787",
+  appId: "1:352388507787:web:6d8b2cf08137ade0918c8e",
+  measurementId: "G-NMWTC5NBQC"
 };
 
 // Initialize Firebase
