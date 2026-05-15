@@ -9,7 +9,7 @@ window.XLSX = XLSX;
 window.Chart = Chart;
 
 import { useFoodData, useToast, useMealContext } from "./hooks/index.js";
-import { AppContext, ToastContext, MealContext } from "./context/contexts.js";
+import { AppContext, ToastContext, MealContext, useAuth } from "./context/contexts.js";
 import { GlobalStyles, Datalists } from "./components/primitives/index.js";
 import { Header } from "./components/layout/index.js";
 import {
@@ -30,10 +30,25 @@ const views = {
 };
 
 export default function BiteBook() {
+  const { user, loading, login } = useAuth();
   const foodData = useFoodData();
   const { toast, show } = useToast();
   const mealContext = useMealContext();
   const [active, setActive] = useState("log");
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return (
+      <div style={{ textAlign: 'center', padding: '50px' }}>
+        <h1>Welcome to BiteBook</h1>
+        <p>Please log in with Google to access your meal data.</p>
+        <button onClick={login} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>Login with Google</button>
+      </div>
+    );
+  }
 
   return (
     <AppContext.Provider value={foodData}>

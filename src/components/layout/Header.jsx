@@ -1,5 +1,6 @@
 import { THEME } from "../../styles/theme.js";
 import "./Header.css";
+import { useAuth } from "../../context/contexts";
 
 const TABS = [
   { id: "log", icon: "📝", label: "Log" },
@@ -10,6 +11,8 @@ const TABS = [
 ];
 
 export function Header({ streak, total, active, onSwitch }) {
+  const { user, login, logout } = useAuth();
+
   return (
     <div className="header">
       <div className="header-content">
@@ -27,6 +30,16 @@ export function Header({ streak, total, active, onSwitch }) {
                   {t}
                 </span>
               )
+            )}
+          </div>
+          <div className="header-auth">
+            {user ? (
+              <div className="user-info">
+                <span>Welcome, {user.displayName}</span>
+                <button onClick={logout} className="auth-button">Logout</button>
+              </div>
+            ) : (
+              <button onClick={login} className="auth-button">Login with Google</button>
             )}
           </div>
         </div>
