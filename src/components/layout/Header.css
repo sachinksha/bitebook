@@ -9,26 +9,26 @@
 .header-content {
   max-width: 960px;
   margin: 0 auto;
-  padding: 16px 20px 0;
+  padding: 8px 12px 0;
 }
 
 .header-top {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 8px;
   flex-wrap: wrap;
 }
 
 .header-logo {
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
   background: rgba(255, 255, 255, 0.14);
-  border-radius: 12px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 18px;
   flex-shrink: 0;
 }
 
@@ -39,7 +39,7 @@
 
 .header-title {
   font-family: 'Ubuntu', serif;
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 700;
   color: #fff;
   letter-spacing: -0.5px;
@@ -64,9 +64,9 @@
 .header-stat {
   background: rgba(255, 255, 255, 0.14);
   color: rgba(255, 255, 255, 0.9);
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
-  padding: 4px 12px;
+  padding: 3px 8px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -77,24 +77,51 @@
   overflow-x: auto;
   scrollbar-width: none;
   scroll-behavior: smooth;
+  position: relative;
 }
 
 .header-tabs::-webkit-scrollbar {
   display: none;
 }
 
+.header-tabs::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(to right, rgba(61, 107, 80, 1), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.header-tabs::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(to left, rgba(61, 107, 80, 1), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .header-tab {
-  padding: 9px 16px;
+  padding: 7px 12px;
   background: transparent;
   color: rgba(255, 255, 255, 0.75);
   border: none;
-  border-radius: 12px 12px 0 0;
+  border-radius: 10px 10px 0 0;
   font-family: 'Ubuntu', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.14s;
+  position: relative;
+  z-index: 2;
 }
 
 .header-tab-active {
@@ -134,4 +161,20 @@
 
 .auth-button:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 375px) {
+  .header-title {
+    font-size: 28px;
+  }
+
+  .header-logo {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+
+  .header-subtitle {
+    font-size: 12px;
+  }
 }

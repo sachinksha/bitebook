@@ -14,7 +14,6 @@ import { GlobalStyles, Datalists } from "./components/primitives/index.js";
 import { Header } from "./components/layout/index.js";
 import {
   LogView,
-  CalendarView,
   HistoryView,
   InsightsView,
   DataView,
@@ -23,7 +22,6 @@ import { Toast } from "./components/primitives/index.js";
 
 const views = {
   log: <LogView />,
-  calendar: <CalendarView />,
   history: <HistoryView />,
   insights: <InsightsView />,
   data: <DataView />,
@@ -78,7 +76,7 @@ export default function BiteBook() {
             onSwitch={setActive}
           />
 
-          <main style={{ maxWidth: 960, margin: "0 auto", padding: "20px 16px 48px" }}>
+          <main style={{ maxWidth: 960, margin: "0 auto", padding: "12px 8px 48px" }}>
             <div
               key={active}
               style={{ animation: "fadeUp .25s ease both" }}
