@@ -8,7 +8,7 @@ BiteBook allows users to:
 - Log breakfast, lunch, and dinner entries
 - Mark meals as home-cooked, ordered, or skipped
 - Store and retrieve data securely per user via Firebase
-- View meal history, calendar analytics, and insights
+- View meal history, filter and sort entries, and analyze insights
 - Import and export data using Excel files
 - Login with Google using Firebase Authentication
 
@@ -42,8 +42,8 @@ The app is deployed at:
 - Clear your meal logs entirely for the signed-in user
 
 ### Insights and visualizations
-- See a calendar view of recent meal activity
-- View history with edit and delete options
+- View meal activity through history and insights
+- View history with edit and delete options and rich filter/sort controls
 - Analyze top dishes and meal patterns
 - Track who cooks most often and how frequently items are repeated
 

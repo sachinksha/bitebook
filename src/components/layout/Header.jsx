@@ -4,7 +4,6 @@ import { useAuth } from "../../context/contexts";
 
 const TABS = [
   { id: "log", icon: "📝", label: "Log" },
-  { id: "calendar", icon: "🗓", label: "Calendar" },
   { id: "history", icon: "📋", label: "History" },
   { id: "insights", icon: "📊", label: "Insights" },
   { id: "data", icon: "📁", label: "Data" },
@@ -24,12 +23,10 @@ export function Header({ streak, total, active, onSwitch }) {
             <div className="header-subtitle">Your daily food log</div>
           </div>
           <div className="header-stats">
-            {[`${total} meals`, streak > 0 ? `${streak}d streak 🔥` : "Start a streak!"].map(
-              (t) => (
-                <span key={t} className="header-stat">
-                  {t}
-                </span>
-              )
+            {total > 0 && (
+              <span key="total" className="header-stat">
+                {total} logged
+              </span>
             )}
           </div>
           <div className="header-auth">

@@ -15,20 +15,20 @@
 .insights-chips {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
+  gap: 8px;
   margin-bottom: 20px;
 }
 
 .insights-charts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
+  gap: 8px;
 }
 
 .insights-chart-box {
   background: #faf8f3;
   border-radius: 16px;
-  padding: 14px 16px;
+  padding: 10px 12px;
   border: 1px solid #ddd8cf;
 }
 

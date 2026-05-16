@@ -9,7 +9,7 @@ BiteBook is a meal logging app with the following capabilities:
 - Track whether meals are home-cooked, ordered, or skipped
 - Persist data in Firebase Firestore per authenticated user
 - Authenticate users using Google OAuth via Firebase Auth
-- View history, calendar, and insights about meal patterns
+- View history and insights about meal patterns
 - Import and export data through Excel files
 
 ## 2. Core web development concepts
@@ -141,16 +141,15 @@ Responsive design ensures web apps work well on phones, tablets, and desktops. B
 
 ### Card-based layouts for mobile
 Instead of large data tables that require horizontal scrolling on phones, BiteBook uses **card-based layouts**:
-- Each piece of information (meal entry, calendar day) becomes a discrete, vertically-stacking card
+- Each meal entry becomes a discrete, vertically-stacking card
 - Cards have generous padding and touch-friendly tap targets (44px minimum height)
 - Visual hierarchy guides the eye: meal type → dish name → details → actions
 
-**Calendar View example:**
-- Old: 14-day table with 4 columns (horizontal scroll on mobile)
-- New: 7-day card grid showing date + meal icons + prep info
-- Mobile: 1 column (full width cards)
-- Tablet: 2 columns (side-by-side)
-- Desktop: 3 columns (compact view)
+**Responsive card layout example:**
+- Mobile: 1 column of full-width history cards
+- Tablet: 2 columns for denser screens
+- Desktop: 3 columns for richer overview
+- Each card shows date, meal icon, meal type badge, dish, and quick action controls
 
 **History View example:**
 - Old: 8-column table with all details visible (overwhelming on phones)
