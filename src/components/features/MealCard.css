@@ -1,5 +1,5 @@
 .meal-card {
-  background: var(--bb-surface);
+  background: var(--bb-surface-primary);
   border: 1.5px solid var(--bb-border);
   border-radius: 16px;
   padding: 16px;
@@ -34,7 +34,7 @@
   font-family: 'Ubuntu', serif;
   font-size: 18px;
   font-weight: 700;
-  color: var(--bb-text);
+  color: var(--bb-text-primary);
 }
 
 .meal-card-saved {
@@ -50,7 +50,7 @@
 .meal-card-logged {
   margin-left: auto;
   font-size: 16px;
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
 }
 
 .meal-card-fields {

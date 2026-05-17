@@ -2,7 +2,7 @@ import { useState, useCallback, useMemo } from "react";
 import { THEME } from "../../styles/theme.js";
 import { today, addDays, fmtShort, fmtLong } from "../../utils/dateUtils.js";
 import { useApp, useToastCtx, useMealCtx } from "../../context/contexts.js";
-import { Card, SectionHeading, Btn } from "../primitives/index.js";
+import { Card, SectionHeading, Btn, Inp } from "../primitives/index.js";
 import { MealCard, RecentMealsPanel } from "../features/index.js";
 import "./LogView.css";
 
@@ -77,7 +77,7 @@ export function LogView() {
             >
               ←
             </Btn>
-            <input
+            <Inp
               type="date"
               value={logDate}
               onChange={(e) => setLogDate(e.target.value)}
@@ -114,7 +114,7 @@ export function LogView() {
         {logDate !== today() && (
           <Btn
             size="sm"
-            variant="ghost"
+            variant="default"
             onClick={() => setLogDate(today())}
             style={{ fontSize: 16 }}
           >

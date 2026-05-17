@@ -24,7 +24,7 @@
 
 .history-date-label {
   font-weight: 600;
-  color: #3a3a38;
+  color: var(--bb-text-secondary);
   font-size: 15px;
 }
 
@@ -80,14 +80,14 @@
 
 .history-entry-name {
   font-weight: 500;
-  color: #3a3a38;
+  color: var(--bb-text-secondary);
   font-size: 15px;
   flex-shrink: 0;
 }
 
 .history-entry-dish {
   font-size: 14px;
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -98,7 +98,7 @@
   background: none;
   border: none;
   font-size: 12px;
-  color: #a8a39a;
+  color: var(--bb-text-light);
   cursor: pointer;
   padding: 4px 6px;
   flex-shrink: 0;
@@ -106,7 +106,7 @@
 }
 
 .history-expand-btn:hover {
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
 }
 
 /* Expandable details section */
@@ -128,13 +128,13 @@
 
 .history-detail-label {
   font-weight: 500;
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
   min-width: 70px;
   flex-shrink: 0;
 }
 
 .history-detail-value {
-  color: #3a3a38;
+  color: var(--bb-text-primary);
   flex: 1;
 }
 
@@ -167,25 +167,25 @@
   gap: 8px;
   margin-top: 4px;
   padding-top: 8px;
-  border-top: 1px solid #ede9e0;
+  border-top: 1px solid var(--bb-border);
 }
 
 .history-detail-btn {
   flex: 1;
   padding: 7px 12px;
   border: 1px solid var(--bb-border);
-  background: var(--bb-surface);
+  background: var(--bb-surface-secondary);
   border-radius: 6px;
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
-  color: var(--bb-text);
+  color: var(--bb-text-secondary);
 }
 
 .history-detail-btn:hover {
-  background: var(--bb-surface-soft);
-  border-color: var(--bb-button-bg);
+  background: var(--bb-surface-tertiary);
+  border-color: var(--bb-sage);
 }
 
 .history-detail-btn-delete {
@@ -206,7 +206,7 @@
   cursor: pointer;
   padding: 4px 8px;
   transition: opacity 0.15s;
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
 }
 
 .history-filter-btn:hover {
@@ -224,8 +224,8 @@
 }
 
 .history-filter-badge {
-  background: #eef7f1;
-  color: #3d6b50;
+  background: var(--bb-surface-tertiary);
+  color: var(--bb-text-secondary);
   padding: 4px 10px;
   border-radius: 14px;
   font-size: 12px;
@@ -234,8 +234,8 @@
 
 .history-clear-filters-btn {
   background: none;
-  border: 1px solid #ddd8cf;
-  color: #7a7068;
+  border: 1px solid var(--bb-border);
+  color: var(--bb-text-tertiary);
   padding: 4px 8px;
   border-radius: 6px;
   font-size: 12px;
@@ -245,16 +245,16 @@
 }
 
 .history-clear-filters-btn:hover {
-  border-color: #7a7068;
-  background: #f5f3f0;
+  border-color: var(--bb-text-tertiary);
+  background: var(--bb-surface-tertiary);
 }
 
 
 /* Entry count badge */
 .history-entry-count {
   font-size: 16px;
-  color: #7a7068;
-  background: #f0ece3;
+  color: var(--bb-text-tertiary);
+  background: var(--bb-surface-tertiary);
   padding: 3px 10px;
   border-radius: 999px;
 }

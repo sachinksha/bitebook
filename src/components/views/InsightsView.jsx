@@ -273,7 +273,7 @@ export function InsightsView() {
               ? `${stats.topDish.count}× logged`
               : "No data"
           }
-          bg={THEME.color.sagePale}
+          bg={"var(--sage)"}
           accent={THEME.color.sage}
         />
         <InsightChip
@@ -285,7 +285,7 @@ export function InsightsView() {
               ? `${stats.maxDays} days ago`
               : "Not enough data"
           }
-          bg={THEME.color.amberPale}
+          bg={"var(--amber)"}
           accent={THEME.color.amber}
         />
         <InsightChip
@@ -293,7 +293,7 @@ export function InsightsView() {
           label="Home-cooked"
           value={`${stats.homePct}%`}
           sub={`vs ${stats.orderedPct}% ordered`}
-          bg={THEME.color.creamDark}
+          bg={"var(--creamDark)"}
           accent={THEME.color.inkMuted}
         />
       </div>
