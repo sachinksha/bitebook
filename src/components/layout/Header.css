@@ -135,6 +135,27 @@
   align-items: center;
 }
 
+.header-theme-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.14s;
+  flex-shrink: 0;
+}
+
+.header-theme-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
 .header-auth {
   display: flex;
   align-items: center;
@@ -162,27 +183,6 @@
 
 .auth-button:hover {
   background: rgba(255, 255, 255, 0.24);
-}
-
-.theme-select select {
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  padding: 6px 8px;
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.14s;
-}
-
-/* Option background must be a solid color — use the sage shade */
-.theme-select select option {
-  background: var(--bb-sage, #3d6b50);
-  color: #ffffff;
-}
-
-.theme-select select:hover {
-  background: rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 375px) {

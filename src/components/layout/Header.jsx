@@ -9,9 +9,18 @@ const TABS = [
   { id: "data",     icon: "📁", label: "Data" },
 ];
 
+const THEME_ICONS = {
+  system: "⚙️",
+  light: "☀️",
+  dark: "🌙",
+};
+
 export function Header({ streak, total, active, onSwitch }) {
   const { user, login, logout } = useAuth();
   const { theme, setTheme } = useTheme();
+
+  const themes = ["system", "light", "dark"];
+  const nextTheme = themes[(themes.indexOf(theme) + 1) % themes.length];
 
   return (
     <div className="header">
@@ -29,15 +38,13 @@ export function Header({ streak, total, active, onSwitch }) {
             )}
           </div>
 
-          <div className="header-actions">
-            <label className="theme-select">
-              <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-                <option value="system">System</option>
-                <option value="light">☀ Light</option>
-                <option value="dark">🌙 Dark</option>
-              </select>
-            </label>
-          </div>
+          <button
+            className="header-theme-btn"
+            onClick={() => setTheme(nextTheme)}
+            title={`Switch to ${nextTheme} theme`}
+          >
+            {THEME_ICONS[theme]}
+          </button>
 
           <div className="header-auth">
             {user ? (

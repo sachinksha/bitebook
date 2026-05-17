@@ -7,7 +7,7 @@ import { MealCard, RecentMealsPanel } from "../features/index.js";
 import "./LogView.css";
 
 export function LogView() {
-  const { data, saveMeal } = useApp();
+  const { data, saveMeal, updateEntry } = useApp();
   const { show } = useToastCtx();
   const { context, resetContext } = useMealCtx();
   const [logDate, setLogDate] = useState(today());
@@ -21,10 +21,18 @@ export function LogView() {
 
   const handleSave = useCallback(
     (entry) => {
-      saveMeal({ ...entry, date: logDate });
-      show(`${entry.meal} saved for ${fmtShort(logDate)}`);
+      const existingMeal = existing[entry.meal];
+      if (existingMeal) {
+        // Overwrite existing meal
+        updateEntry(existingMeal.id, { ...entry, date: logDate });
+        show(`${entry.meal} updated for ${fmtShort(logDate)}`);
+      } else {
+        // Save new meal
+        saveMeal({ ...entry, date: logDate });
+        show(`${entry.meal} saved for ${fmtShort(logDate)}`);
+      }
     },
-    [logDate, saveMeal, show]
+    [logDate, saveMeal, updateEntry, show, existing]
   );
 
   const handleDragOver = (e, meal) => {
