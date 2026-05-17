@@ -13,13 +13,13 @@
 }
 
 .log-view-drop-zone.drag-over .meal-card {
-  border-color: #3d6b50 !important;
-  box-shadow: 0 0 12px rgba(61, 107, 80, 0.25) !important;
+  border-color: var(--bb-sage) !important;
+  box-shadow: 0 0 12px rgba(90, 143, 110, 0.25) !important;
 }
 
 .log-view-context-banner {
-  background: #eef7f1;
-  border: 1px solid #c8e6d4;
+  background: var(--bb-surface-secondary);
+  border: 1px solid var(--bb-border);
   border-radius: 12px;
   padding: 8px 12px;
   display: flex;
@@ -32,16 +32,16 @@
 .log-view-context-label {
   font-size: 14px;
   font-weight: 600;
-  color: #3d6b50;
+  color: var(--bb-text-secondary);
   text-transform: uppercase;
 }
 
 .log-view-context-value {
   font-size: 16px;
   font-weight: 500;
-  color: #1a1714;
-  background: #ffffff;
+  color: var(--bb-text-primary);
+  background: var(--bb-surface-primary);
   padding: 3px 10px;
   border-radius: 8px;
-  border: 1px solid #c8e6d4;
+  border: 1px solid var(--bb-border);
 }

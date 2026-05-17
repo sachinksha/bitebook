@@ -4,6 +4,6 @@
   font-weight: 600;
   letter-spacing: 0.7px;
   text-transform: uppercase;
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
   margin-bottom: 5px;
 }

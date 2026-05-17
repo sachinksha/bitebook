@@ -1,6 +1,7 @@
 import { THEME } from "../../styles/theme.js";
 import "./Header.css";
 import { useAuth } from "../../context/contexts";
+import { useTheme } from "../../context/ThemeProvider";
 
 const TABS = [
   { id: "log", icon: "📝", label: "Log" },
@@ -11,6 +12,7 @@ const TABS = [
 
 export function Header({ streak, total, active, onSwitch }) {
   const { user, login, logout } = useAuth();
+  const { theme, setTheme } = useTheme();
 
   return (
     <div className="header">
@@ -29,6 +31,17 @@ export function Header({ streak, total, active, onSwitch }) {
               </span>
             )}
           </div>
+
+          <div className="header-actions">
+            <label className="theme-select">
+              <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+                <option value="system">System</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+            </label>
+          </div>
+
           <div className="header-auth">
             {user ? (
               <div className="user-info">

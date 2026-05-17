@@ -7,16 +7,18 @@
 .type-pill {
   padding: 4px 12px;
   border-radius: 999px;
-  border: 1.5px solid;
+  border: 1.5px solid var(--bb-border);
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.14s;
-  background: #ffffff;
+  background: var(--bb-surface-primary);
+  color: var(--bb-text-secondary);
   font-family: 'Ubuntu', sans-serif;
 }
 
 .type-pill-active {
-  background: var(--active-bg);
-  color: var(--active-color);
+  background: var(--bb-sage);
+  color: #ffffff;
+  border-color: var(--bb-sage);
 }
