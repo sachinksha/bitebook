@@ -1,6 +1,6 @@
 .meal-card {
-  background: #ffffff;
-  border: 1.5px solid;
+  background: var(--bb-surface-primary);
+  border: 1.5px solid var(--bb-border);
   border-radius: 16px;
   padding: 16px;
   display: flex;
@@ -26,17 +26,16 @@
   margin-top: 4px;
 }
 
-.meal-card-icon {
-  font-size: 20px;
-}
+.meal-card-icon { font-size: 20px; }
 
 .meal-card-title {
   font-family: 'Ubuntu', serif;
   font-size: 18px;
   font-weight: 700;
-  color: #1a1714;
+  color: var(--bb-text-primary);
 }
 
+/* "Saved" badge — light-mode defaults; dark overridden in App.css */
 .meal-card-saved {
   margin-left: auto;
   background: #bbf7d0;
@@ -45,22 +44,22 @@
   font-weight: 700;
   padding: 2px 9px;
   border-radius: 999px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .meal-card-saved {
+  background: #14532d;
+  color: #86efac;
 }
 
 .meal-card-logged {
   margin-left: auto;
   font-size: 16px;
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
 }
 
 .meal-card-fields {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 8px;
-}
-
-@media (max-width: 480px) {
-  .meal-card-fields {
-    grid-template-columns: 1fr;
-  }
 }

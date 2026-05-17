@@ -21,7 +21,7 @@ export function Badge({ type }) {
   }[type] || {};
 
   return (
-    <span className="badge" style={{ background: m.bg, color: m.color }}>
+    <span className="badge">
       {m.label}
     </span>
   );

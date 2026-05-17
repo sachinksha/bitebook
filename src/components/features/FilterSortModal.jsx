@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import "./FilterSortModal.css";
 
+// Both the overlay and the modal panel are rendered via a React portal so they
+// always attach directly to document.body, escaping any parent stacking context
+// (e.g. the bb-view-animate animation wrapper) that would otherwise trap
+// position:fixed children and prevent true viewport centering.
 export function FilterSortModal({
   isOpen,
   onClose,
@@ -36,48 +41,33 @@ export function FilterSortModal({
   };
 
   const handleApply = () => {
-    const updatedFilters = {
-      ...localFilters,
-      foodSearch,
-    };
-    onApply(updatedFilters, localSort);
+    onApply({ ...localFilters, foodSearch }, localSort);
     onClose();
   };
 
   const handleClear = () => {
-    setLocalFilters({
-      mealType: null,
-      madeByType: null,
-      orderType: null,
-      foodSearch: "",
-    });
-    setLocalSort({
-      field: "date",
-      direction: "desc",
-    });
+    setLocalFilters({ mealType: null, madeByType: null, orderType: null, foodSearch: "" });
+    setLocalSort({ field: "date", direction: "desc" });
     setFoodSearch("");
     setFoodSuggestions([]);
   };
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <>
       <div className="filter-sort-modal-overlay" onClick={onClose} />
       <div className="filter-sort-modal">
         <div className="filter-sort-modal-header">
           <h2>Filter & Sort</h2>
-          <button className="filter-sort-close-btn" onClick={onClose}>
-            ✕
-          </button>
+          <button className="filter-sort-close-btn" onClick={onClose}>✕</button>
         </div>
 
         <div className="filter-sort-modal-content">
-          {/* FILTERS SECTION */}
+          {/* FILTERS */}
           <div className="filter-sort-section">
             <h3 className="filter-sort-section-title">Filters</h3>
 
-            {/* Meal Type Filter */}
             <div className="filter-sort-group">
               <label className="filter-sort-label">Meal Type</label>
               <div className="filter-sort-button-group">
@@ -102,7 +92,6 @@ export function FilterSortModal({
               </div>
             </div>
 
-            {/* Made By Type Filter */}
             <div className="filter-sort-group">
               <label className="filter-sort-label">Made By</label>
               <div className="filter-sort-button-group">
@@ -129,7 +118,6 @@ export function FilterSortModal({
               </div>
             </div>
 
-            {/* Order Type Filter - only show if relevant data exists */}
             {availableData.orderTypes && availableData.orderTypes.length > 0 && (
               <div className="filter-sort-group">
                 <label className="filter-sort-label">Order Type</label>
@@ -139,11 +127,7 @@ export function FilterSortModal({
                       key={type}
                       className={`filter-sort-pill ${
                         localFilters.orderType ===
-                        (type === "All"
-                          ? null
-                          : type === "Dine-in"
-                          ? "dine-in"
-                          : "delivery")
+                        (type === "All" ? null : type === "Dine-in" ? "dine-in" : "delivery")
                           ? "filter-sort-pill-active"
                           : ""
                       }`}
@@ -151,11 +135,7 @@ export function FilterSortModal({
                         setLocalFilters((prev) => ({
                           ...prev,
                           orderType:
-                            type === "All"
-                              ? null
-                              : type === "Dine-in"
-                              ? "dine-in"
-                              : "delivery",
+                            type === "All" ? null : type === "Dine-in" ? "dine-in" : "delivery",
                         }))
                       }
                     >
@@ -167,7 +147,6 @@ export function FilterSortModal({
               </div>
             )}
 
-            {/* Food Search */}
             <div className="filter-sort-group">
               <label className="filter-sort-label">Food Search</label>
               <div className="filter-sort-search-input">
@@ -206,32 +185,26 @@ export function FilterSortModal({
             </div>
           </div>
 
-          {/* SORT SECTION */}
+          {/* SORT */}
           <div className="filter-sort-section">
             <h3 className="filter-sort-section-title">Sort</h3>
 
-            {/* Sort Field */}
             <div className="filter-sort-group">
               <label className="filter-sort-label">Sort By</label>
               <div className="filter-sort-button-group">
                 {[
-                  { value: "date", label: "Date" },
+                  { value: "date",     label: "Date" },
                   { value: "mealType", label: "Meal Type" },
-                  { value: "madeBy", label: "Made By" },
-                  { value: "dish", label: "Dish" },
+                  { value: "madeBy",   label: "Made By" },
+                  { value: "dish",     label: "Dish" },
                 ].map((option) => (
                   <button
                     key={option.value}
                     className={`filter-sort-pill ${
-                      localSort.field === option.value
-                        ? "filter-sort-pill-active"
-                        : ""
+                      localSort.field === option.value ? "filter-sort-pill-active" : ""
                     }`}
                     onClick={() =>
-                      setLocalSort((prev) => ({
-                        ...prev,
-                        field: option.value,
-                      }))
+                      setLocalSort((prev) => ({ ...prev, field: option.value }))
                     }
                   >
                     {option.label}
@@ -240,26 +213,20 @@ export function FilterSortModal({
               </div>
             </div>
 
-            {/* Sort Direction */}
             <div className="filter-sort-group">
               <label className="filter-sort-label">Direction</label>
               <div className="filter-sort-button-group">
                 {[
                   { value: "desc", label: "↓ Descending" },
-                  { value: "asc", label: "↑ Ascending" },
+                  { value: "asc",  label: "↑ Ascending" },
                 ].map((option) => (
                   <button
                     key={option.value}
                     className={`filter-sort-pill ${
-                      localSort.direction === option.value
-                        ? "filter-sort-pill-active"
-                        : ""
+                      localSort.direction === option.value ? "filter-sort-pill-active" : ""
                     }`}
                     onClick={() =>
-                      setLocalSort((prev) => ({
-                        ...prev,
-                        direction: option.value,
-                      }))
+                      setLocalSort((prev) => ({ ...prev, direction: option.value }))
                     }
                   >
                     {option.label}
@@ -271,20 +238,15 @@ export function FilterSortModal({
         </div>
 
         <div className="filter-sort-modal-actions">
-          <button
-            className="filter-sort-btn filter-sort-btn-clear"
-            onClick={handleClear}
-          >
+          <button className="filter-sort-btn filter-sort-btn-clear" onClick={handleClear}>
             Clear All
           </button>
-          <button
-            className="filter-sort-btn filter-sort-btn-apply"
-            onClick={handleApply}
-          >
+          <button className="filter-sort-btn filter-sort-btn-apply" onClick={handleApply}>
             Apply
           </button>
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 }

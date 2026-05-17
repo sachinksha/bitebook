@@ -12,7 +12,7 @@ export function Inp({ list, style, ...props }) {
       className={`inp ${foc ? "inp-focused" : ""}`}
       style={{
         borderColor: foc ? THEME.color.sage : THEME.color.border,
-        background: foc ? THEME.color.white : THEME.color.cream,
+        background: "var(--bb-surface-secondary)",
         boxShadow: foc ? `0 0 0 3px ${THEME.color.sageLight}55` : "none",
         ...style,
       }}

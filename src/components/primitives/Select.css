@@ -1,11 +1,12 @@
 .sel {
   width: 100%;
   padding: 9px 32px 9px 12px;
-  border: 1.5px solid;
+  border: 1.5px solid var(--bb-border);
   border-radius: 12px;
   appearance: none;
   cursor: pointer;
-  color: #1a1714;
+  color: var(--bb-text-primary);
+  background-color: var(--bb-surface-primary);
   font-size: 16px;
   outline: none;
   transition: all 0.15s;
@@ -18,5 +19,6 @@
 }
 
 .sel-focused {
-  background-color: #ffffff;
+  background-color: var(--bb-surface-primary);
+  border-color: var(--bb-sage);
 }

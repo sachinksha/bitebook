@@ -11,7 +11,7 @@ export function Sel({ style, ...props }) {
       className={`sel ${foc ? "sel-focused" : ""}`}
       style={{
         borderColor: foc ? THEME.color.sage : THEME.color.border,
-        background: foc ? THEME.color.white : THEME.color.cream,
+        // background: foc ? THEME.color.white : THEME.color.cream,
         ...style,
       }}
       {...props}
