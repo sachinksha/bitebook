@@ -1,6 +1,6 @@
 .meal-card {
-  background: #ffffff;
-  border: 1.5px solid;
+  background: var(--bb-surface);
+  border: 1.5px solid var(--bb-border);
   border-radius: 16px;
   padding: 16px;
   display: flex;
@@ -34,7 +34,7 @@
   font-family: 'Ubuntu', serif;
   font-size: 18px;
   font-weight: 700;
-  color: #1a1714;
+  color: var(--bb-text);
 }
 
 .meal-card-saved {

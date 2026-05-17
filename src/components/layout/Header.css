@@ -1,5 +1,5 @@
 .header {
-  background: var(--accent);
+  background: var(--bb-button-bg);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -41,7 +41,7 @@
   font-family: 'Ubuntu', serif;
   font-size: 36px;
   font-weight: 700;
-  color: var(--header-text, #fff);
+  color: var(--bb-white);
   letter-spacing: -0.5px;
   line-height: 1;
 }
@@ -149,9 +149,9 @@
 }
 
 .auth-button {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.16);
   color: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   padding: 8px 16px;
   border-radius: 8px;
   font-size: 14px;

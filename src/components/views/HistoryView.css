@@ -16,9 +16,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 6px 8px;
-  background: #faf8f3;
+  background: var(--bb-surface-soft);
   border-radius: 6px;
-  border-left: 3px solid #7fb597;
+  border-left: 3px solid var(--bb-sage);
   margin-bottom: 8px;
 }
 
@@ -30,8 +30,8 @@
 
 .history-date-count {
   font-size: 13px;
-  color: #7a7068;
-  background: white;
+  color: var(--bb-muted);
+  background: var(--bb-surface);
   padding: 2px 8px;
   border-radius: 999px;
 }
@@ -45,9 +45,9 @@
 
 /* Individual entry card */
 .history-entry-card {
-  border: 1px solid #ddd8cf;
+  border: 1px solid var(--bb-border);
   border-radius: 8px;
-  background: white;
+  background: var(--bb-surface);
   overflow: hidden;
   transition: box-shadow 0.2s;
 }
@@ -63,14 +63,14 @@
   gap: 8px;
   padding: 6px 8px;
   cursor: pointer;
-  background: #fafaf8;
+  background: var(--bb-surface-soft);
   transition: background 0.15s;
   user-select: none;
   min-height: 44px;
 }
 
 .history-entry-header:hover {
-  background: #f5f3f0;
+  background: var(--bb-surface-muted);
 }
 
 .history-entry-icon {
@@ -111,9 +111,9 @@
 
 /* Expandable details section */
 .history-entry-details {
-  border-top: 1px solid #ede9e0;
+  border-top: 1px solid var(--bb-border);
   padding: 8px;
-  background: #fafaf8;
+  background: var(--bb-surface-soft);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -140,10 +140,10 @@
 
 .history-detail-select {
   padding: 5px 8px;
-  border: 1px solid #ddd8cf;
+  border: 1px solid var(--bb-border);
   border-radius: 6px;
-  background: white;
-  color: #1a1714;
+  background: var(--bb-input-bg);
+  color: var(--bb-input-text);
   font-size: 13px;
   font-family: 'Ubuntu', sans-serif;
   cursor: pointer;
@@ -173,19 +173,19 @@
 .history-detail-btn {
   flex: 1;
   padding: 7px 12px;
-  border: 1px solid #ddd8cf;
-  background: white;
+  border: 1px solid var(--bb-border);
+  background: var(--bb-surface);
   border-radius: 6px;
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
-  color: #3a3a38;
+  color: var(--bb-text);
 }
 
 .history-detail-btn:hover {
-  background: #f5f3f0;
-  border-color: #3d6b50;
+  background: var(--bb-surface-soft);
+  border-color: var(--bb-button-bg);
 }
 
 .history-detail-btn-delete {

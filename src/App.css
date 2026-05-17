@@ -1,6 +1,7 @@
 /* BiteBook — declared styles (theme via CSS variables) */
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
 
+/* Light theme (default) */
 :root {
   --bb-font-display: "Source Sans 3", system-ui, sans-serif;
   --bb-font-body: "Source Sans 3", system-ui, sans-serif;
@@ -36,6 +37,30 @@
   --bb-font-hero: clamp(2rem, 5vw, 3rem);
 }
 
+/* Dark theme */
+[data-theme="dark"] {
+  --bb-cream: #0a0e11;
+  --bb-cream-dark: #0f131a;
+  --bb-parchment: #13181e;
+  --bb-ink: #e8e3d9;
+  --bb-ink-soft: #d4cec3;
+  --bb-ink-muted: #a0978b;
+  --bb-border: #2b3137;
+  --bb-border-light: #1f2329;
+  --bb-sage: #5a8f6e;
+  --bb-sage-mid: #7aaf8d;
+  --bb-sage-light: #4a7a5c;
+  --bb-sage-pale: #1d3a28;
+  --bb-terra: #d97a52;
+  --bb-terra-pale: #3d2419;
+  --bb-amber: #e5a84f;
+  --bb-amber-pale: #3a2f0e;
+  --bb-white: #141820;
+  --bb-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.5);
+  --bb-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.6);
+  --bb-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
 *,
 *::before,
 *::after {
@@ -53,6 +78,7 @@ body {
   background: var(--bb-cream);
   color: var(--bb-ink);
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {

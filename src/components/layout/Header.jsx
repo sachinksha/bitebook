@@ -42,6 +42,9 @@ export function Header({ streak, total, active, onSwitch }) {
             </label>
           </div>
 
+          <div className="header-auth">
+            {user ? (
+              <div className="user-info">
                 <span>Welcome, {user.displayName}</span>
                 <button onClick={logout} className="auth-button">Logout</button>
               </div>
