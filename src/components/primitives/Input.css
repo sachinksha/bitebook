@@ -1,10 +1,10 @@
 .inp {
   width: 100%;
   padding: 9px 12px;
-  border: 1.5px solid;
+  border: 1.5px solid var(--bb-border);
   border-radius: 12px;
-  background: #faf8f3;
-  color: #1a1714;
+  background: var(--bb-surface-secondary);
+  color: var(--bb-text-primary);
   font-size: 16px;
   outline: none;
   transition: all 0.15s;
@@ -12,5 +12,6 @@
 }
 
 .inp-focused {
-  background: #ffffff;
+  background: var(--bb-surface-primary);
+  border-color: var(--bb-sage);
 }

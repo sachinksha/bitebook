@@ -1,5 +1,5 @@
 .header {
-  background: #3d6b50;
+  background: var(--bb-sage);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -41,14 +41,14 @@
   font-family: 'Ubuntu', serif;
   font-size: 36px;
   font-weight: 700;
-  color: #fff;
+  color: #ffffff;
   letter-spacing: -0.5px;
   line-height: 1;
 }
 
 .header-subtitle {
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.85);
   letter-spacing: 1.3px;
   text-transform: uppercase;
   margin-top: 2px;
@@ -62,13 +62,13 @@
 }
 
 .header-stat {
-  background: rgba(255, 255, 255, 0.14);
-  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 3px 8px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.24);
 }
 
 .header-tabs {
@@ -80,18 +80,14 @@
   position: relative;
 }
 
-.header-tabs::-webkit-scrollbar {
-  display: none;
-}
+.header-tabs::-webkit-scrollbar { display: none; }
 
 .header-tabs::before {
   content: '';
   position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
+  left: 0; top: 0; bottom: 0;
   width: 20px;
-  background: linear-gradient(to right, rgba(61, 107, 80, 1), transparent);
+  background: linear-gradient(to right, rgba(0,0,0,0.12), transparent);
   pointer-events: none;
   z-index: 1;
 }
@@ -99,11 +95,9 @@
 .header-tabs::after {
   content: '';
   position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  right: 0; top: 0; bottom: 0;
   width: 20px;
-  background: linear-gradient(to left, rgba(61, 107, 80, 1), transparent);
+  background: linear-gradient(to left, rgba(0,0,0,0.12), transparent);
   pointer-events: none;
   z-index: 1;
 }
@@ -111,7 +105,7 @@
 .header-tab {
   padding: 7px 12px;
   background: transparent;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.95);
   border: none;
   border-radius: 10px 10px 0 0;
   font-family: 'Ubuntu', sans-serif;
@@ -124,14 +118,21 @@
   z-index: 2;
 }
 
+/* Active tab uses --bb-surface-primary so it picks up dark mode automatically */
 .header-tab-active {
-  background: #ffffff;
-  color: #3d6b50;
+  background: var(--bb-surface-primary);
+  color: var(--bb-sage);
   font-weight: 600;
 }
 
 .header-tab:hover:not(.header-tab-active) {
-  color: rgba(255, 255, 255, 0.95);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
 }
 
 .header-auth {
@@ -144,37 +145,48 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 16px;
 }
 
 .auth-button {
-  background: rgba(255, 255, 255, 0.14);
-  color: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   padding: 8px 16px;
   border-radius: 8px;
   font-size: 14px;
   cursor: pointer;
-  transition: all 0.14s;
+  transition: background 0.14s;
 }
 
 .auth-button:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.theme-select select {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.14s;
+}
+
+/* Option background must be a solid color — use the sage shade */
+.theme-select select option {
+  background: var(--bb-sage, #3d6b50);
+  color: #ffffff;
+}
+
+.theme-select select:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 375px) {
-  .header-title {
-    font-size: 28px;
-  }
-
-  .header-logo {
-    width: 26px;
-    height: 26px;
-    font-size: 14px;
-  }
-
-  .header-subtitle {
-    font-size: 12px;
-  }
+  .header-title  { font-size: 28px; }
+  .header-logo   { width: 26px; height: 26px; font-size: 14px; }
+  .header-subtitle { font-size: 12px; }
 }

@@ -1,35 +1,35 @@
 .data-view-dropzone {
-  border: 2px dashed #5a8f6e;
+  border: 2px dashed var(--bb-sage);
   border-radius: 16px;
   padding: 32px 20px;
   text-align: center;
-  background: #faf8f3;
+  background: var(--bb-surface-secondary);
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .data-view-dropzone.dragging {
-  border-color: #3d6b50;
-  background: #eef7f1;
+  border-color: var(--bb-sage);
+  background: var(--bb-surface-tertiary);
 }
 
 .data-view-dropzone-title {
   font-weight: 600;
-  color: #3a3330;
+  color: var(--bb-text-secondary);
   margin-bottom: 4px;
   font-size: 16px;
 }
 
 .data-view-dropzone-subtitle {
   font-size: 16px;
-  color: #3d6b50;
+  color: var(--bb-text-secondary);
 }
 
 .data-view-info {
   padding: 16px 18px;
-  background: #f0ece3;
+  background: var(--bb-surface-secondary);
   border-radius: 16px;
-  border: 1px solid #ddd8cf;
+  border: 1px solid var(--bb-border);
 }
 
 .data-view-info-title {
@@ -37,15 +37,16 @@
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 10px;
+  color: var(--bb-text-primary);
 }
 
 .data-view-info-list {
   padding-left: 18px;
   line-height: 2;
   font-size: 16px;
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
 }
 
 .data-view-info-list strong {
-  color: #3d6b50;
+  color: var(--bb-text-secondary);
 }

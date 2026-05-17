@@ -17,12 +17,12 @@
   font-family: 'Ubuntu', serif;
   font-size: 24px;
   font-weight: 700;
-  color: #1a1714;
+  color: var(--bb-text-primary);
   line-height: 1.2;
   margin-bottom: 3px;
 }
 
 .insight-chip-sub {
   font-size: 16px;
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
 }

@@ -8,7 +8,7 @@
 
 .insights-meal-count {
   font-size: 16px;
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
   padding-bottom: 2px;
 }
 
@@ -26,10 +26,10 @@
 }
 
 .insights-chart-box {
-  background: #faf8f3;
+  background: var(--bb-surface-secondary);
   border-radius: 16px;
   padding: 10px 12px;
-  border: 1px solid #ddd8cf;
+  border: 1px solid var(--bb-border);
 }
 
 .insights-chart-title {
@@ -37,13 +37,13 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
   margin-bottom: 10px;
 }
 
 .insights-suggestions {
-  background: #fff8ed;
-  border: 1px solid #f0e4d2;
+  background: var(--bb-surface-secondary);
+  border: 1px solid var(--bb-border);
   border-radius: 14px;
   padding: 16px;
   margin-bottom: 20px;
@@ -61,12 +61,12 @@
 .insights-suggestions-title {
   font-size: 16px;
   font-weight: 700;
-  color: #3a3a38;
+  color: var(--bb-text-primary);
 }
 
 .insights-suggestions-note {
   font-size: 13px;
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
   max-width: 520px;
 }
 
@@ -83,25 +83,26 @@
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
-  background: #ffffff;
+  background: var(--bb-surface-primary);
   border-radius: 10px;
-  border: 1px solid #e5d7c2;
-  color: #3a3a38;
+  border: 1px solid var(--bb-border);
+  color: var(--bb-text-primary);
   font-weight: 500;
 }
 
+/* Uses --bb-amber which adapts to both light and dark themes */
 .insights-suggestion-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #b95f0b;
+  background: var(--bb-amber);
   flex-shrink: 0;
 }
 
 .insights-suggestion-empty {
-  color: #7a7068;
+  color: var(--bb-text-tertiary);
   padding: 10px 12px;
   border-radius: 10px;
-  background: #faf3eb;
-  border: 1px dashed #e6d7c8;
+  background: var(--bb-surface-secondary);
+  border: 1px dashed var(--bb-border);
 }
