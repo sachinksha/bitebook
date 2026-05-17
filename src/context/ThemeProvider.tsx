@@ -1,11 +1,16 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState, PropsWithChildren } from "react";
 
 const STORAGE_KEY = "bb-theme";
 
-const ThemeContext = createContext({ theme: "system", setTheme: () => {} });
+interface ThemeContextType {
+  theme: string;
+  setTheme: (theme: string) => void;
+}
 
-export function ThemeProvider({ children }) {
-  const [theme, setThemeState] = useState(() => {
+const ThemeContext = createContext<ThemeContextType>({ theme: "system", setTheme: () => {} });
+
+export function ThemeProvider({ children }: PropsWithChildren) {
+  const [theme, setThemeState] = useState<string>(() => {
     try {
       return localStorage.getItem(STORAGE_KEY) || "system";
     } catch (e) {

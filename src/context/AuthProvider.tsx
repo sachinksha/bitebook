@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, PropsWithChildren } from 'react';
+import type { User } from 'firebase/auth';
 import {
   onAuthStateChanged,
   signInWithPopup,
@@ -13,10 +14,10 @@ import { auth } from '../firebase';
 
 const provider = new GoogleAuthProvider();
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [authError, setAuthError] = useState(null);
+export const AuthProvider = ({ children }: PropsWithChildren) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [authError, setAuthError] = useState<string | null>(null);
 
   useEffect(() => {
     const configurePersistence = async () => {
